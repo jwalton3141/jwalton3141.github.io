@@ -1,0 +1,17 @@
+# Setup
+title:        It's more fun to compute
+tagline:      Thoughts on maths and computing
+baseurl:      ""
+paginate:     1
+
+# About/contact
+author:
+  name:       Jack Walton
+  url:        https://jwalton3141.github.io/about
+
+# Gems
+gems:
+  - jekyll-paginate
+
+#Others
+markdown: kramdown

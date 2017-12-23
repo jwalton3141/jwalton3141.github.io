@@ -1,0 +1,21 @@
+---
+layout: default
+title: {{ site.name }}
+---
+
+<div id="home">
+  <h1>Posts</h1>
+
+  <ul class="posts", style="list-style-type:none">
+    {% for post in site.posts %}
+      <li><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
+
+      <div class="entry">
+        {{ post.excerpt }}
+      </div>
+
+      <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
+    {% endfor %}
+
+  </ul>
+</div>
