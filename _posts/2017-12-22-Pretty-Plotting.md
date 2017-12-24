@@ -1,13 +1,13 @@
 ---
 layout: post
-title: Publication quality plots with matplotlib and LaTex
+title: Publication-quality plots with matplotlib and LaTex
 ---
 
 Figures are an incredibly important aspect of effectively communicating research and ideas. Poor quality figures are difficult to read and interpret. At their worse, bad figures are simply misleading. Good quality plots, however, blend seamlessly with a document, they are readable, clear, concise and aesthetically pleasing.
 
 So, if you care about your research (and, since you're here, I'm going to take that as a given) you should care about your figure presentation too. Producing graphics isn't the most exciting aspect of research, but it is an essential and unavoidable part of it.
 
-This post will introduce the essential skills and ideas you'll need to produce publication quality figures using the Python plotting package [matplotlib](https://matplotlib.org/). We'll learn how to seamlessly embed figures into [LaTex](https://www.latex-project.org/about/) documents and [beamer presentations](https://ctan.org/pkg/beamer?lang=en). Minimum working examples will be provided to fully illustrate figure production.
+This post will introduce the essential skills and ideas you'll need to produce publication-quality figures using the Python plotting package [matplotlib](https://matplotlib.org/). We'll learn how to seamlessly embed figures into [LaTex](https://www.latex-project.org/about/) documents and [beamer presentations](https://ctan.org/pkg/beamer?lang=en). Minimum working examples will be provided to fully illustrate figure production.
 
 It is assumed that the reader already has some familiarity with matplotlib, however, more advanced ability is not assumed. References and links will be provided to relevant literature and further reading.
 
@@ -26,11 +26,11 @@ plt.style.available
 ```
 to list our style options.
 
-Style sheets allow the user to effortlessly swap between stylings without having to alter their plotting routines. As an example, to change to the [seaborn](https://seaborn.pydata.org/) style we would use ```plt.style.use('seaborn')```.
+Style sheets allow the user to effortlessly swap between styles without having to alter their plotting routines. As an example, to change to the [seaborn](https://seaborn.pydata.org/) style we would use ```plt.style.use('seaborn')```.
 
-# Seamless embedding in LaTexs
+# Seamless embedding in LaTex
 
-Whether you wish to pen a research paper, your doctoral thesis or a report for a colleague, many will wish to embed figures from matplotlib into a [LaTex](https://www.latex-project.org/about/) document. To maintain the desired aspect ratio of your figures, to avoid unwanted scaling and to allow fontsize to be matched between figure and the body of your text, we must learn to set the dimensions of your figure correctly. Later in this post we shall discuss the best file formats to save and preserve your new figures. Finally we show how to insert your figures into LaTex.
+Whether you wish to pen a research paper, your doctoral thesis or a report for a colleague, many will wish to embed figures from matplotlib into a [LaTex](https://www.latex-project.org/about/) document. To maintain the desired aspect ratio of your figures, to avoid unwanted scaling and to allow font size to be matched between figure and the body of your text, we must learn to set the dimensions of your figure correctly. Later in this post we shall discuss the best file formats to save and preserve your new figures. Finally we show how to insert your figures into LaTex.
 
 ## Determining figure size
 
@@ -98,7 +98,7 @@ from my_plot import set_size
 width = 345
 fig, ax = plt.subplots(1, 1, figsize=set_size(width))
 ```
-If you desire to create a figure narrower than the textwidth you may use the fraction arguement. For example, to create a figure half the width of your document:
+If you desire to create a figure narrower than the textwidth you may use the fraction argument. For example, to create a figure half the width of your document:
 ```py
 fig, ax = plt.subplots(1, 1, figsize=set_size(width, fraction=0.5))
 ```
@@ -247,4 +247,6 @@ plt.savefig('/path/to/directory/example_2.pdf', format='pdf', bbox_inches='tight
 
 The figure produced looks professional and aesthetically pleasing - it will also look great when embedded into a report.
 
-So we see, with little extra work we can consistently produce great-looking plots. And as with all things Python, there are a tonne of resources both on and offline to help if you get stuck with your figure production.
+# Summary
+
+In this post we have seen how easy it is to change the style of our plots. We have learnt that to effectively present figures in a document we must take care to create a figure of the correct dimensions. With the correct dimensions our figure avoids any unwanted scaling and change in aspect ratio. After a brief discussion of why we should save our figures in the ```.pdf``` format, we discussed how to use LaTex to render the fonts in our figures. Putting all these things together we can now produce truly publication-quality plots, and embed them in our work.
