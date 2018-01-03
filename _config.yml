@@ -15,3 +15,6 @@ gems:
 
 #Others
 markdown: kramdown
+
+plugins:
+  - jekyll-seo-tag 
