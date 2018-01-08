@@ -1,8 +1,12 @@
 # Setup
 title:        It's more fun to compute
 tagline:      Thoughts on maths and computing
+description:  "A blog exploring how python and linux can be used to aid academic research."
+url:          "https://jwalton3141.github.io/"
 baseurl:      ""
 paginate:     1
+# Don't include date in url - doesn't add any useful info.
+permalink: /:title/
 
 # About/contact
 author:
@@ -17,4 +21,5 @@ gems:
 markdown: kramdown
 
 plugins:
-  - jekyll-seo-tag 
+  - jekyll-seo-tag
+  - jekyll-sitemap
