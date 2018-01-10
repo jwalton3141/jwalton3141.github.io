@@ -4,7 +4,7 @@
   {% if page.image %}
     <meta property="og:image" content="{{ page.image }}" />
   {% else %}
-  	<meta property="og:image" content="/assets/background.png" />
+  	<meta property="og:image" content="{{ default.image }}" />
   {% endif %}
   {% if page.title %}
   	<meta property="og:title" content="{{ page.title }}" />
