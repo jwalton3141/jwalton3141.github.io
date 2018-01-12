@@ -13,13 +13,10 @@ author:
   name:       Jack Walton
   url:        https://jwalton3141.github.io/about
 
-# Gems
-gems:
-  - jekyll-paginate
-
 #Others
 markdown: kramdown
 
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
+  - jekyll-paginate
