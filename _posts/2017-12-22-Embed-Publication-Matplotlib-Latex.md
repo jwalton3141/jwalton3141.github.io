@@ -104,24 +104,8 @@ If you desire to create a figure narrower than the textwidth you may use the fra
 fig, ax = plt.subplots(1, 1, figsize=set_size(width, fraction=0.5))
 ```
 
-You may find it useful to predefine widths which you use regularly to your ```set_size``` function. Examples could be the textwidth of your thesis document, a journal you submit to, or a beamer template. Your revised function may now look something like the one below.
+You may find it useful to predefine widths which you use regularly to your ```set_size``` function. Examples could be the textwidth of your thesis document, a journal you submit to, or a beamer template. Our ammended function may include:
 ```py
-def set_size(width, fraction=1):
-    """ Set aesthetic figure dimensions to avoid scaling in LaTex.
-
-    Parameters
-    ----------
-    width: float or string
-            Width in pts or a predefined size, 'thesis', 'beamer', 'pnas'
-    fraction: float
-            Fraction of the width which you wish the figure to occupy
-
-    Returns
-    -------
-    fig_dim: list
-            Dimensions of figure in inches
-    """
-    # If using a pre-defined width
     if width == 'thesis':
         width_pt = 426.79135
     elif width == 'beamer':
@@ -132,26 +116,53 @@ def set_size(width, fraction=1):
         width_pt = width
     # Width of figure
     fig_width_pt = width_pt * fraction
+```
 
-    # Convert from pt to inches
-    inches_per_pt = 1 / 72.27
+## Text rendering with LaTeX
 
-    # Golden ratio to set aesthetic figure height
-    golden_ratio = (5**.5 - 1) / 2
+To really make our figures blend with our document we need the font to match between our figure and the body of our text. [This topic is well-covered in matplotlib's documentation](https://matplotlib.org/users/usetex.html), though I decided to cover the topic here for completeness.
 
-    # Figure width in inches
-    fig_width_in = fig_width_pt * inches_per_pt
-    # Figure height in inches
-    fig_height_in = fig_width_in * golden_ratio
+We shall use LaTex to render the text in our figures by updating our [```rc settings```](http://matplotlib.org/users/customizing.html#the-matplotlibrc-file). This update can also be used to ensure that the document and figure use the same font sizes. The example below shows how to update ```rcParams``` to use LaTex to render your text:
+```py
+""" A simple example of creating a figure with text rendered in LaTex. """
 
-    fig_dim = [fig_width_in, fig_height_in]
+import numpy as np
+import matplotlib as mpl
+import matplotlib.pyplot as plt
+from my_plot import set_size
 
-    return fig_dim
+# Using seaborn's style
+plt.style.use('seaborn')
+width = 345
+
+nice_fonts = {
+        # Use LaTeX to write all text
+        "text.usetex": True,
+        "font.family": "serif",
+        # Use 10pt font in plots, to match 10pt font in document
+        "axes.labelsize": 10,
+        "font.size": 10,
+        # Make the legend/label fonts a little smaller
+        "legend.fontsize": 8,
+        "xtick.labelsize": 8,
+        "ytick.labelsize": 8,
+}
+
+mpl.rcParams.update(nice_fonts)
+
+x = np.linspace(0, 2*np.pi, 100)
+# Initialise figure instance
+fig, ax = plt.subplots(1, 1, figsize=set_size(width))
+# Plot
+ax.plot(x, np.sin(x))
+ax.set_xlim(0, 2*np.pi)
+ax.set_xlabel(r'$\theta$')
+ax.set_ylabel(r'$\sin{(\theta)}$')
 ```
 
 ## Save format
 
-When it comes to saving your now beautifully rendered figures - some file formats are better suited than others. If you are submitting to a journal it is essential that you first check which formats they will accept.
+Some file formats are better suited than others when saving your plots. If you are submitting to a journal it is essential that you first check which formats they will accept.
 
 I would strongly recommend the use of a file format which can store vector images. Vector images allow the reader to zoom into a plot indefinitely, without encountering any pixelation. This is not true for raster images. Examples of raster image formats are .png and .jpeg; examples of vector graphic formats are .svg and .pdf. If, for whatever reason, you wish to continue using raster graphics - [make sure to use .png and not .jpeg.](https://www.labnol.org/software/tutorials/jpeg-vs-png-image-quality-or-bandwidth/5385/)
 
@@ -201,52 +212,6 @@ The ```graphicx``` package may then be used to insert this figure into LaTex:
 
 \end{document}
 ```
-
-## Text rendering with LaTeX
-
-To really make our figures blend with our document we need the font to match between our figure and the body of our text. [This topic is well-covered in matplotlib's documentation](https://matplotlib.org/users/usetex.html), however I shall cover the topic here for completeness.
-
-We shall use LaTex to render the text in our figures by updating our [```rc settings```](http://matplotlib.org/users/customizing.html#the-matplotlibrc-file). This update can also be used to ensure that the document and figure use the same font sizes. Extending our earlier example we now have:
-```py
-""" A simple example of creating a figure and saving as a pdf, with text rendered with LaTex. """
-
-import numpy as np
-import matplotlib as mpl
-import matplotlib.pyplot as plt
-from my_plot import set_size
-
-# Using seaborn's style
-plt.style.use('seaborn')
-width = 345
-
-nice_fonts = {
-        # Use LaTeX to write all text
-        "text.usetex": True,
-        "font.family": "serif",
-        # Use 10pt font in plots
-        "axes.labelsize": 10,
-        "font.size": 10,
-        # Make the legend/label fonts a little smaller
-        "legend.fontsize": 8,
-        "xtick.labelsize": 8,
-        "ytick.labelsize": 8,
-}
-
-mpl.rcParams.update(nice_fonts)
-
-x = np.linspace(0, 2*np.pi, 100)
-# Initialise figure instance
-fig, ax = plt.subplots(1, 1, figsize=set_size(width))
-# Plot
-ax.plot(x, np.sin(x))
-ax.set_xlim(0, 2*np.pi)
-ax.set_xlabel(r'$\theta$')
-ax.set_ylabel(r'$\sin{(\theta)}$')
-
-plt.savefig('/path/to/directory/example_2.pdf', format='pdf', bbox_inches='tight')
-```
-
-The figure produced looks professional and aesthetically pleasing - it will also look great when embedded into a report.
 
 # Summary
 
