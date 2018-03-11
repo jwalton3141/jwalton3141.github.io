@@ -31,7 +31,7 @@ Style sheets allow the user to effortlessly swap between styles without having t
 
 # Seamless embedding in LaTex
 
-Whether you wish to pen a research paper, your doctoral thesis or a report for a colleague, many will wish to embed figures from matplotlib into a [LaTex](https://www.latex-project.org/about/) document. To maintain the desired aspect ratio of your figures, to avoid unwanted scaling and to allow font size to be matched between figure and the body of your text, we must learn to set the dimensions of your figure correctly. Later in this post we shall discuss the best file formats to save and preserve your new figures. Finally we show how to insert your figures into LaTex.
+Whether you wish to pen a research paper, your doctoral thesis or a report for a colleague, many will wish to embed figures from matplotlib into a [LaTex](https://www.latex-project.org/about/) document. To maintain the desired aspect ratio of your figures, to avoid unwanted scaling and to allow font size to be matched between figure and the body of your text, we must learn to set the dimensions of your figure manually. Later in this post we shall discuss the best file formats to save and preserve your new figures. Finally we show how to insert your figures into LaTex.
 
 ## Determining figure size
 
@@ -120,7 +120,7 @@ You may find it useful to predefine widths which you use regularly to your ```se
 
 ## Text rendering with LaTeX
 
-To really make our figures blend with our document we need the font to match between our figure and the body of our text. [This topic is well-covered in matplotlib's documentation](https://matplotlib.org/users/usetex.html), though I decided to cover the topic here for completeness.
+To really make our figures blend with our document we need the font to match between our figure and the body of our text. [This topic is well-covered in matplotlib's documentation](https://matplotlib.org/users/usetex.html), though I decided to cover it here for completeness.
 
 We shall use LaTex to render the text in our figures by updating our [```rc settings```](http://matplotlib.org/users/customizing.html#the-matplotlibrc-file). This update can also be used to ensure that the document and figure use the same font sizes. The example below shows how to update ```rcParams``` to use LaTex to render your text:
 ```py
@@ -159,6 +159,16 @@ ax.set_xlim(0, 2*np.pi)
 ax.set_xlabel(r'$\theta$')
 ax.set_ylabel(r'$\sin{(\theta)}$')
 ```
+
+rcParams can be used to control many other aspects of your figures. Run ```mpl.rcParams``` to return a dictionary object detailing your current settings.
+
+## Handling multiple axes
+
+It's often easier to handle subfigures at the matplotlib level, rather than within LaTex. To insert plots with subfigures we need to understand how to adjust figure dimensions for multiple axes.
+
+Consider a figure containing subfigures arranged into 5 rows and 2 columns. It's easy to imagine (if you can't, try it for yourself) how using our previously defined ```set_size``` will not handle plots with multiple axes.
+
+Fortunately, our function is easy to adapt. Simply add the default argument ```subplot=[1, 1]``` to the function definition. Along with this, you must change the line which calculates the figure height to ```fig_height_in = fig_width_in * golden_ratio * (subplot[0] / subplot[1])```. We'd initialise a figure with 5 rows and 2 columns of axes as ```fig, ax = plt.subplots(width, subplot=[5, 2])```.
 
 ## Save format
 
@@ -206,12 +216,14 @@ The ```graphicx``` package may then be used to insert this figure into LaTex:
 
 \begin{figure}[!htbp]
 	\centering
-	\includegraphics[width=\textwidth]{/path/to/directory/example_1.pdf}
+	\includegraphics{/path/to/directory/example_1.pdf}
 	\caption{Our first figure.}
 \end{figure}
 
 \end{document}
 ```
+
+Typically, alongside figures typeset in LaTex you'll see ```[width=\textwidth]```. However, now that our figures are created to specification, this command becomes superfluous.
 
 # Summary
 
