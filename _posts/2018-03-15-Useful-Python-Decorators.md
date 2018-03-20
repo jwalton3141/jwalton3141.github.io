@@ -61,15 +61,19 @@ import pygame
 from functools import wraps
 
 def beeper(function):
-    """ Wrapper that plays a sound when function completes ."""
-	
-    # Preserve docstring (and other attributes) of function
+    """ Decorator that plays a sound when function completes """
+
     @wraps(function)
     def wrapper(*args, **kwargs):
         results = function(*args, **kwargs)
-        pygame.mixer.init()
-        pygame.mixer.music.load("Amsterdam.ogg")
-        pygame.mixer.music.play()
+        # Try play beeper
+        try:
+            pygame.mixer.init()
+            pygame.mixer.music.load("/data/surf_scoter/infer/inputs/Amsterdam.ogg")
+            pygame.mixer.music.play()
+        # If can't play (for example: running script over ssh), don't flip
+        except:
+            pass
         return results
     return wrapper
 ```
