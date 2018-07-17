@@ -7,6 +7,8 @@ baseurl:      ""
 paginate:     1
 # Don't include date in url - doesn't add any useful info.
 permalink: /:title/
+# Include posts even if date is set in future
+future: true
 
 # About/contact
 author:
