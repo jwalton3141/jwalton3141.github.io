@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Publication-quality plots with matplotlib and LaTex
-image: https://jwalton3141.github.io/assets/new_style.png
+image: https://jwalton3141.github.io/assets/publication_quality/new_style.png
 ---
 
 Figures are an incredibly important aspect of effectively communicating research and ideas. Poor quality figures are difficult to read and interpret. At their worse, bad figures are simply misleading. Good quality plots, however, blend seamlessly with a document, they are readable, clear, concise and aesthetically pleasing.
@@ -16,8 +16,8 @@ It is assumed that the reader already has some familiarity with matplotlib, howe
 
 One of the first things that a reader will notice about your figures is their colour scheme and styling. Many matplotlib users are languishing behind the times with an old install of the package. More recent releases of matplotlib (>= v2.0) feature improved styling. [This excellent talk from Scipy's 2015 conference](https://www.youtube.com/watch?v=xAoljeRJ3lU]) delves into some of the theory behind the new default colourmap. If you aren't sure how to get the latest install, [refer to the documentation provided by matplotlib](https://matplotlib.org/users/installing.html).
 
-[![old_style](/assets/old_style.png "Old default"){:class="img-responsive"}](https://matplotlib.org/devdocs/gallery/style_sheets/style_sheets_reference.html)
-[![new_style](/assets/new_style.png "New default"){:class="img-responsive"}](https://matplotlib.org/devdocs/gallery/style_sheets/style_sheets_reference.html)
+[![old_style](/assets/publication_quality/old_style.png "Old default"){:class="img-responsive"}](https://matplotlib.org/devdocs/gallery/style_sheets/style_sheets_reference.html)
+[![new_style](/assets/publication_quality/new_style.png "New default"){:class="img-responsive"}](https://matplotlib.org/devdocs/gallery/style_sheets/style_sheets_reference.html)
 
 
 If you remain unhappy with the default styling, matplotlib provides [many different style sheets for you to try out](https://matplotlib.org/devdocs/gallery/style_sheets/style_sheets_reference.html). Alternatively you could use
@@ -104,7 +104,7 @@ If you desire to create a figure narrower than the textwidth you may use the fra
 fig, ax = plt.subplots(1, 1, figsize=set_size(width, fraction=0.5))
 ```
 
-You may find it useful to predefine widths which you use regularly to your ```set_size``` function. Examples could be the textwidth of your thesis document, a journal you submit to, or a beamer template. Our ammended function may include:
+You may find it useful to predefine widths which you use regularly to your ```set_size``` function. Examples could be the textwidth of your thesis document, a journal you submit to, or a beamer template. Our amended function may include:
 ```py
     if width == 'thesis':
         width_pt = 426.79135
@@ -118,7 +118,7 @@ You may find it useful to predefine widths which you use regularly to your ```se
     fig_width_pt = width_pt * fraction
 ```
 
-## Text rendering with LaTeX
+## Text rendering with LaTex
 
 To really make our figures blend with our document we need the font to match between our figure and the body of our text. [This topic is well-covered in matplotlib's documentation](https://matplotlib.org/users/usetex.html), though I decided to cover it here for completeness.
 
@@ -136,7 +136,7 @@ plt.style.use('seaborn')
 width = 345
 
 nice_fonts = {
-        # Use LaTeX to write all text
+        # Use LaTex to write all text
         "text.usetex": True,
         "font.family": "serif",
         # Use 10pt font in plots, to match 10pt font in document
@@ -176,7 +176,7 @@ Some file formats are better suited than others when saving your plots. If you a
 
 I would strongly recommend the use of a file format which can store vector images. Vector images allow the reader to zoom into a plot indefinitely, without encountering any pixelation. This is not true for raster images. Examples of raster image formats are .png and .jpeg; examples of vector graphic formats are .svg and .pdf. If, for whatever reason, you wish to continue using raster graphics - [make sure to use .png and not .jpeg.](https://www.labnol.org/software/tutorials/jpeg-vs-png-image-quality-or-bandwidth/5385/)
 
-[![raster_v_vector](/assets/raster_v_vector.svg "Raster vs vector"){:class="img-responsive"}](https://en.wikipedia.org/wiki/Scalable_Vector_Graphics#/media/File:Bitmap_VS_SVG.svg)
+[![raster_v_vector](/assets/publication_quality/raster_v_vector.svg "Raster vs vector"){:class="img-responsive"}](https://en.wikipedia.org/wiki/Scalable_Vector_Graphics#/media/File:Bitmap_VS_SVG.svg)
 
 Below we create a simple figure and save it in the ```.pdf``` format. To remove excess whitespace which matplotlib pads plots with we may use ```bbox_inches='tight'```:
 

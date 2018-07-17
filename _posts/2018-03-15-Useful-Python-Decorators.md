@@ -6,7 +6,7 @@ image: https://jwalton3141.github.io/assets/background.png
 
 It was around a year ago that I first came across the concept of a [decorator](https://wiki.python.org/moin/PythonDecorators) in Python. I was immediately intrigued: the use of a function of function appealed to me as a mathematician. However, other than the "time" example often used to advocate the use of decorators, I didn't immediately find much use for them.
 
-Largely, I found that though many promoted the use of decorators, simple examples demonstrating their usefulness were scarce. A year later decorators have become part of my everyday workflow, and so I wanted to share three useful decorators I use regularly.
+Largely, I found that though many promoted the use of decorators, simple examples demonstrating their usefulness were scarce. A year later decorators have become part of my everyday work flow, and so I wanted to share three useful decorators I use regularly.
 
 If you're unfamiliar with decorators [Stackoverflow provides a surprisingly good starting point](https://stackoverflow.com/a/1594484). As with all things Python a quick Google search will return a plethora of resources. This post is not intended to be an introduction to decorators, instead I hope to persuade you of their usefulness by way of three simple examples
 .
@@ -54,7 +54,7 @@ I wrote the below decorator to play a sound once my run completes. This decorato
 
 You'll notice that this decorator utilises the library ```pygame```. [Pygame](https://www.pygame.org/wiki/about) is a large project which does so much more than playing sounds, and its use here is certainly overkill. However, after playing around with [snack](http://www.speech.kth.se/snack/), [pyaudio](https://people.csail.mit.edu/hubert/pyaudio/) and others, I found that Pygame was the easiest to get working straight out of the box.
 
-Here I use the notification ```Amsterdam.ogg``` which I found in my ubuntu install at ```/usr/share/sounds/ubuntu/notifications```. Ensure that ```music.load()``` can find your desired sound file, either by way of an absolute or relative path.
+Here I use the notification ```Amsterdam.ogg``` which I found in my Ubuntu install at ```/usr/share/sounds/ubuntu/notifications```. Ensure that ```music.load()``` can find your desired sound file, either by way of an absolute or relative path.
 
 ```py
 import pygame
