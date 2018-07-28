@@ -14,7 +14,7 @@ Traditional histograms are not very good for visualising directional data, they 
 
 The polar histograms below visualise two randomly generated datasets, where the *area* of each sector is proportional to the number of observations in that bin. The helper function I used to create these plots is given below.
 
-<img width="708" height="328" src="/assets/rose_plots/polar_radians.png" style="display: block; margin-left: auto; margin-right: auto">
+<img width="708" height="328" src="/assets/rose_plots/polar_radians.png" style="display: block; margin-left: auto; margin-right: auto; height: auto">
 
 ## Python implementation
 
@@ -103,4 +103,4 @@ angle_label = [r'$0^\circ$', r'$90^\circ$', r'$180^\circ$', r'$270^\circ$']
 ```
 Putting this altogether we plot the same randomly generated dataset as before, but measuring in degrees and with the 0 direction taken to point North.
 
-<img width="708" height="328" src="/assets/rose_plots/polar_degrees.png" style="display: block; margin-left: auto; margin-right: auto">
+<img width="708" height="328" src="/assets/rose_plots/polar_degrees.png" style="display: block; margin-left: auto; margin-right: auto; height: auto">
