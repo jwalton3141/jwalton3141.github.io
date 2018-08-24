@@ -86,9 +86,9 @@ fig.savefig('polar.png', format='png', bbox_inches='tight', dpi=1200)
 
 Directions can be represented as rotations with respect to some zero–direction, or origin. The practitioner is free to chose the zero–direction as they feel appropriate. In a similar way, the practitioner may choose whether a clockwise or anti–clockwise rotation is taken as the positive direction.
 
-Here I take the zero angle as the direction from (0, 0) and along the positive x–axis, and take anti-clockwise rotations as the positive direction. Angles are chosen to be measured in radians and restricted to the domain (-pi, pi). I define angles this way to be consistent with the definition of the [atan2 function](https://en.wikipedia.org/wiki/Atan2).
+Here I take the zero angle as the direction from \\((0, 0)\\) and along the positive \\(x\\)–axis, and take anti-clockwise rotations as the positive direction. Angles are chosen to be measured in radians and restricted to the domain \\((-\pi, \pi)\\). I define angles this way to be consistent with the definition of the [atan2 function](https://en.wikipedia.org/wiki/Atan2).
 
-The helper function above is hard-coded to plot using this convention. However, it is easy to adapt the function to whatever angle convention you use. For example, consider that you define your 0 angle as the direction from (0, 0) and along the positive y-direction (pointing North). To correct for this add a rotation of pi/2 to the call to ```ax.bar``` so that you now have.
+The helper function above is hard-coded to plot using this convention. However, it is easy to adapt the function to whatever angle convention you use. For example, consider that you define your 0 angle as the direction from \\((0, 0\\)) and along the positive \\(y\\)-direction (pointing North). To correct for this add a rotation of \\(\pi/2\\) to the call to ```ax.bar``` so that you now have.
 ```py
 # Add rotation
 ax.bar(bin[:-1] + np.pi/bins + np.pi/2, radius, width=2*np.pi/bins, zorder=1, edgecolor='C0',
