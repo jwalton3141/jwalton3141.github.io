@@ -4,7 +4,7 @@ title: Speeding up Python code with Numpy&#58; an example case
 image: https://jwalton3141.github.io/assets/ESS/Astro-ML.png
 ---
 
-In this post I shall introduce the defintion of the effective sample size (ESS) as given by Gelman *et. al*\\(\,\\) in their book [Bayesian Data Analysis 3](http://www.stat.columbia.edu/~gelman/book/). Afterwards I shall review [PyMC](https://pymc-devs.github.io/pymc/README.html#purpose)'s computation of the ESS. PyMC's implementation provides a perfect example case of how we can speed up code with [Numpy](https://docs.scipy.org/doc/numpy/user/whatisnumpy.html#what-is-numpy). I show how we can do so and compute the ESS over *500x faster* than PyMC. I've posted the full example code and speed comparison used in this post [here](https://github.com/jwalton3141/jwalton3141.github.io/blob/master/assets/ESS/rwmh.py).
+In this post I shall introduce the defintion of the effective sample size (ESS) as given by Gelman *et. al* in their book [Bayesian Data Analysis 3](http://www.stat.columbia.edu/~gelman/book/). Afterwards I shall review [PyMC](https://pymc-devs.github.io/pymc/README.html#purpose)'s computation of the ESS. PyMC's implementation provides a perfect example case of how we can speed up code with [Numpy](https://docs.scipy.org/doc/numpy/user/whatisnumpy.html#what-is-numpy). I show how we can do so and compute the ESS over *500x faster* than PyMC. I've posted the full example code and speed comparison used in this post [here](https://github.com/jwalton3141/jwalton3141.github.io/blob/master/assets/ESS/rwmh.py).
 
 ## Effective sample size
 
