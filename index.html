@@ -12,10 +12,9 @@ image: https://jwalton3141.github.io/assets/background.png
       <li><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
 
       <div class="entry">
-        {{ post.excerpt }}
+        <p>{{ post.excerpt | remove: '<p>' | remove: '</p>' }} <br />
+        <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a></p>
       </div>
-
-      <p><a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a></p>
 
     {% endfor %}
 
