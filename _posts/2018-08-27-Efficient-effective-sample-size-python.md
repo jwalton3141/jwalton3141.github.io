@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Speeding up Python code with Numpy: an example case
+title: Speeding up Python code with Numpy&#58; an example case
 image: https://jwalton3141.github.io/assets/ESS/Astro-ML.png
 ---
 
