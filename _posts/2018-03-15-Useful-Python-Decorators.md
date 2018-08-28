@@ -3,6 +3,7 @@ layout: post
 title: 3 useful Python decorators
 image: https://jwalton3141.github.io/assets/background.png
 mathjax: false
+comments: true
 ---
 
 It was around a year ago that I first came across the concept of a [decorator](https://wiki.python.org/moin/PythonDecorators) in Python. I was immediately intrigued: the use of a function of function appealed to me as a mathematician. However, other than the "time" example often used to advocate the use of decorators, I didn't immediately find much use for them.

@@ -3,6 +3,7 @@ layout: post
 title: Publication-quality plots with matplotlib and LaTex
 image: https://jwalton3141.github.io/assets/publication_quality/new_style.png
 mathjax: false
+comments: true
 ---
 
 Figures are an incredibly important aspect of effectively communicating research and ideas. Poor quality figures are difficult to read and interpret. At their worse, bad figures are simply misleading. Good quality plots, however, blend seamlessly with a document, they are readable, clear, concise and aesthetically pleasing.
