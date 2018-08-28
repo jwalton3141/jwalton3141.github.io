@@ -1,11 +1,13 @@
 <head>
   <meta charset="UTF-8">
   <title>{{ site.title }}</title>
+ 
   {% if page.image %}
     <meta property="og:image" content="{{ page.image }}" />
   {% else %}
   	<meta property="og:image" content="{{ default.image }}" />
   {% endif %}
+ 
   {% if page.title %}
   	<meta property="og:title" content="{{ page.title }}" />
   	<meta property="og:type" content="article">
@@ -13,15 +15,22 @@
   	<meta property="og:title" content="{{ default.title }}">
     <meta property="og:type" content="website">
   {% endif %}
+ 
   {% if page.excerpt %}
     <meta property="og:description" content="{{ page.excerpt | strip_html | strip_newlines | truncate: 250 }}">
   {% else %}
     <meta property="og:description" content="{{ site.description }}">
   {% endif %}
+
+  {% if page.mathjax %}
+    {% include mathjax.html %}
+  {% endif %}
+ 
   <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#157878">
   <link rel="stylesheet" href="{{ site.baseurl }}/css/normalize.css">
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="{{ site.baseurl }}/css/cayman.css">
+
 </head>

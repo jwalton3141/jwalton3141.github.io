@@ -2,6 +2,7 @@
 layout: post
 title: Visualising circular data in matplotlib
 image: https://jwalton3141.github.io/assets/rose_plots/polar_radians.png
+mathjax: true
 ---
 
 Circular data arises very naturally in many different situations. Meterologists regularly encounter directional data when considering wind directions, ecologists may come across angular data when looking at the directions of motion of animals, and we all come into contact with at least one type of circular data every day: the time.

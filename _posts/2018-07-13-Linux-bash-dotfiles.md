@@ -2,6 +2,7 @@
 layout: post
 title: Customising your command line
 image: https://jwalton3141.github.io/assets/dotfiles/zsh_prompt.png
+mathjax: false
 ---
 
 Your command line is a very powerful tool, and once you've spent a fair amount of time working from it you may wish to customise the way it looks and behaves. Fortunately, it's very easy to do so using so-called dotfiles. At the most basic level you may have encountered these before, most likely in the form of the [```.bashrc```](https://unix.stackexchange.com/a/129144) file.
