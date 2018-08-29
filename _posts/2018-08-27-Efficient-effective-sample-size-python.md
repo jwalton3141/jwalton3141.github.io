@@ -6,17 +6,17 @@ mathjax: true
 comments: true
 ---
 
-In this post I shall introduce the defintion of the effective sample size (ESS) as given by Gelman *et. al* in their book [Bayesian Data Analysis 3](http://www.stat.columbia.edu/~gelman/book/). Afterwards I shall review [PyMC](https://pymc-devs.github.io/pymc/README.html#purpose)'s computation of the ESS. PyMC's implementation provides a perfect example case of how we can speed up code with [Numpy](https://docs.scipy.org/doc/numpy/user/whatisnumpy.html#what-is-numpy). I show how we can do so and compute the ESS over *500x faster* than PyMC. I've posted the full example code and speed comparison used in this post [here](https://github.com/jwalton3141/jwalton3141.github.io/blob/master/assets/ESS/rwmh.py).
+In this post I shall introduce the definition of the effective sample size (ESS) as given by Gelman *et. al* in their book [Bayesian Data Analysis 3](http://www.stat.columbia.edu/~gelman/book/). Afterwards I shall review [PyMC](https://pymc-devs.github.io/pymc/README.html#purpose)'s computation of the ESS. PyMC's implementation provides a perfect example case of how we can speed up code with [Numpy](https://docs.scipy.org/doc/numpy/user/whatisnumpy.html#what-is-numpy). I show how we can do so and compute the ESS over *500x faster* than PyMC. I've posted the full example code and speed comparison used in this post [here](https://github.com/jwalton3141/jwalton3141.github.io/blob/master/assets/ESS/rwmh.py).
 
 ## Effective sample size
 
-The statistican is often interested in drawing random samples from probability distributions. For nice, well-behaved distributions they can do this easily, and the draws made are all independent of one another. However, it is often of interest to draw from some nasty intractable distributions, from which we cannot easily sample. MCMC provides a way of making draws from these complex distributions. However, the samples made are not independent. 
+The statistician is often interested in drawing random samples from probability distributions. For nice, well-behaved distributions they can do this easily, and the draws made are all independent of one another. However, it is often of interest to draw from some nasty intractable distributions, from which we cannot easily sample. MCMC provides a way of making draws from these complex distributions. However, the samples made are not independent. 
 
 The effective sample size (ESS) is introduced as a notion to assess the `size' of a sample when the samples are correlated. As such, the ESS provides the practitioner a way to assess the output and efficiency of their MCMC scheme.
 
 ## Definition
 
-I've tried to keep this defintion as concise as possible. If you'd like more details and justification, see section 11.5 of BDA3. In contrast, if you're not interested in the maths, feel free to skip ahead and see how I improved PyMC's computation of the ESS in python.
+I've tried to keep this definition as concise as possible. If you'd like more details and justification, see section 11.5 of BDA3. In contrast, if you're not interested in the maths, feel free to skip ahead and see how I improved PyMC's computation of the ESS in python.
 
 Consider that we have \\( m \\) chains of length \\( n\\), which target some estimand of interest \\( \psi \\), where we label the simulations as \\( \psi\_{i, j}\\) \\( (i=1,\ldots,n;j=1,\ldots,m) \\). If the \\( n \\) simulation draws are all independent within each chain, then the between sequence variance \\( B \\) is an unbiased estimator of \\( \textrm{var}( \psi \mid y ) \\), and we have realised \\( mn \\) independent samples. Often, though, each sequence is autocorrelated and so we see that the between sequence variance \\( B \\) is greater than the posterior variance \\( \textrm{var}( \psi \mid y ) \\).
 
@@ -62,7 +62,7 @@ In wishing to compute the ESS of some MCMC scheme output in python, I had a look
 
 A big red efficiency flag when reading python code is seeing an abundance of for loops. Python is very flexible, and allows users to combine any types of objects in the same list. As such, whenever operating on any element of a list there is a lot of overhead in type checking . Because of this overhead python's for loops are notoriously slow (see [this link](https://jakevdp.github.io/blog/2014/05/09/why-python-is-slow/) for a more thorough and accurate explanation of why python is slow).
 
-However, we can often use [Numpy](https://docs.scipy.org/doc/numpy/user/whatisnumpy.html#what-is-numpy) to vectorise our code and push these for loops down into C, where the implementation will happen at near-C speed. This is possible as Numpy is more strict as to what an array can contain. Whereas a python list can contain any sequence of objects, Numpy upcasts objects to ensure that all elements are of the same type, allowing for more efficient manipulation and storage of data.
+However, we can often use [Numpy](https://docs.scipy.org/doc/numpy/user/whatisnumpy.html#what-is-numpy) to vectorise our code and push these for loops down into C, where the implementation will happen at near-C speed. This is possible as Numpy is more strict as to what an array can contain. Whereas a python list can contain any sequence of objects, Numpy requires that all entries are of the same type, allowing for more efficient manipulation and storage of data.
 
 Of particular concern to me was the PyMC computation of the variogram, which was done so using a generator expression and two nested for loops:
 
@@ -114,7 +114,7 @@ Putting this altogether we can improve PyMC's computation of the ESS. All that i
 
 To assess how our vectorisation improves the performance of the computation we need a simple example and some MCMC output to assess.
 
-Here I shall consider that we wish to infer the location parameters \\( (\mu\_1, \mu\_2)^T \\) of a bivariate normal distribution with covariance given by the identity matrix, and observations \\( (x, y) \\). We shall simulate a random walk [Metropolis--Hastings algorithm](https://en.wikipedia.org/wiki/Metropolis%E2%80%93Hastings_algorithm#Formal_derivation). For this simple example a Metropolis--Hastings algorithm is overkill --- but it provides us a quick way to get our hands on some correlated samples. The code below will simulate 4 separate chains, each with different initialisations and each chain making 10,000 iterations of the MH algorithm.
+Here I shall consider that we wish to infer the location parameters \\( (\mu\_1, \mu\_2)^T \\) of a bivariate normal distribution with covariance given by the identity matrix, and observations \\( (x, y) \\). We shall simulate a random walk [Metropolis--Hastings algorithm](https://en.wikipedia.org/wiki/Metropolis%E2%80%93Hastings_algorithm#Formal_derivation) with uniform prior beliefs. For this simple example a Metropolis--Hastings algorithm is overkill --- but it provides us a quick way to get our hands on some correlated samples. The code below will simulate 4 separate chains, each with different initialisations and each chain making 10,000 iterations of the MH algorithm.
 
 ```py
 # Number of iterations and number of runs to make
@@ -165,4 +165,4 @@ So we see, vectorising two lines of python code with Numpy has taken the run tim
 
 ## Summary
 
-As we have seen, with a little Numpy know-how we can make very significant performace improvements with little alteration to our code. We explored a real-world example case where we were able to improve the performance of a function by over 500 times by altering two lines of code. So next time you hit a bottleneck in your code, see which for loops you can shed with the help of Numpy.
+As we have seen, with a little Numpy know-how we can make very significant performance improvements with little alteration to our code. We explored a real-world example case where we were able to improve the performance of a function by over 500 times by altering two lines of code. So next time you hit a bottleneck in your code, see which for loops you can shed with the help of Numpy.
