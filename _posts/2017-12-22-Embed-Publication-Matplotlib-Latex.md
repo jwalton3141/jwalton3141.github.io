@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Publication-quality plots with matplotlib and LaTex
+title: Plot publication-quality figures with matplotlib and LaTeX
 image: https://jwalton3141.github.io/assets/publication_quality/new_style.png
 mathjax: false
 comments: true

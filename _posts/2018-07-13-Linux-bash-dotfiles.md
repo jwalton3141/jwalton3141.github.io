@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Customising your command line
+title: How to customise the command prompt
 image: https://jwalton3141.github.io/assets/dotfiles/zsh_prompt.png
 mathjax: false
 comments: true
