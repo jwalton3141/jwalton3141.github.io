@@ -2,7 +2,7 @@
 layout: about
 ---
 
-## About Me
+# About Me
 
 <img style="float: left; padding-right:20px" width="112" height="123" src="/assets/portrait.jpg">
 
