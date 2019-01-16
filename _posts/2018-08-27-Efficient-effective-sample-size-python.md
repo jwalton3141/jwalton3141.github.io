@@ -58,7 +58,7 @@ where \\( T \\) is the first odd positive integer for which \\( \hat{\rho}\_{T+1
 
 ## Improving performance with Numpy
 
-In wishing to compute the ESS of some MCMC scheme output in python, I had a look around to try and find existing python implementations. I was surprised to find only [one implementation](https://github.com/pymc-devs/pymc/blob/14d8e9fc03bf9be1c3508b8b4563561480f0b358/pymc/diagnostics.py#L497), by PyMC. The author's compute the ESS as defined by Gelman *et. al* (above). However, inspecting the source code revealed warning signs of inefficiencies.
+In wishing to compute the ESS of some MCMC scheme output in python, I had a look around to try and find existing python implementations. I was surprised to find only [one implementation](https://github.com/pymc-devs/pymc/blob/14d8e9fc03bf9be1c3508b8b4563561480f0b358/pymc/diagnostics.py#L497), by PyMC. The authors compute the ESS as defined by Gelman *et. al* (above). However, inspecting the source code revealed warning signs of inefficiencies.
 
 A big red efficiency flag when reading python code is seeing an abundance of for loops. Python is very flexible, and allows users to combine any types of objects in the same list. As such, whenever operating on any element of a list there is a lot of overhead in type checking . Because of this overhead python's for loops are notoriously slow (see [this link](https://jakevdp.github.io/blog/2014/05/09/why-python-is-slow/) for a more thorough and accurate explanation of why python is slow).
 
