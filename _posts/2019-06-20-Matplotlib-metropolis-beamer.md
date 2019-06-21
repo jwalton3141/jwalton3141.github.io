@@ -48,35 +48,28 @@ Rather than altering these rcParams in every one of my plotting routines, the pr
 # Matplotlib style file to create plots that integrate nicely
 # with the metropolis beamer template
 
-# Colours pulled from beamercolorthememetropolis.dtx
-mDarkTeal = mDarkTeal
-mLightBrown = EB811B
-mLightGreen = 14B03D
-mDarkBrown = 604c38
-
-# Not in beamercolorthememetropolis.dtx --- this is an approximation of the colour of the background
-# used in the slides (black!2)
-mBlack2 = FAFAFA 
+# Colours pulled from beamermetropolis.sty
+# Background colour in beamermetropolis.sty is as black!2
+# not very useful for matplotlib. Approximate as FAFAFA
 
 axes.axisbelow: True
 axes.edgecolor: White
 axes.facecolor: EAEAF2
 axes.grid: False
-axes.labelcolor: mDarkTeal
-axes.labelsize: 12
+axes.labelcolor: 23373b
+axes.labelsize: 10
 axes.linewidth: 0
 
-# Set up colour cycle using metropolis colours
-axes.prop_cycle: cycler('color', ['4C72B0', mLightBrown, mLightGreen, mDarkBrown])
+# Set up colour cycle from metropolis
+axes.prop_cycle: cycler('color', ['4C72B0', 'EB811B', '14B03D', '604c38'])
 
-# Default size of single figure spanning textwidth of slide
+# Default size of single figure spanning textwidth of thesis
 figure.figsize: 4.2519699737097, 2.627861962896592
-figure.titlesize: 12
-# Match the facecolour to the background of the slides
-figure.facecolor: mBlack2
+figure.titlesize: 10
+figure.facecolor: FAFAFA
 
 font.family: sans-serif
-font.size: 14
+font.size: 10
 
 grid.color: white
 grid.linestyle: -
@@ -84,7 +77,7 @@ grid.linewidth: 1
 
 image.cmap: Greys
 
-legend.fontsize: 12
+legend.fontsize: 10
 legend.frameon: False
 legend.numpoints: 1
 legend.scatterpoints: 1
@@ -98,15 +91,14 @@ lines.solid_capstyle: round
 patch.facecolor: 4C72B0
 patch.linewidth: .3
 
-# Ensure saved figure also has facecolor of the slide background
-savefig.facecolor: mBlack2
+savefig.facecolor: FAFAFA
 savefig.format: pdf
 
 text.usetex: True
 text.latex.preamble: \usepackage[T1]{fontenc}, \usepackage[lf]{FiraSans}, \usepackage{sfmath}
-text.color: mDarkTeal
+text.color: 23373b
 
-xtick.color: mDarkTeal
+xtick.color: 23373b
 xtick.labelsize: 8
 xtick.direction: out
 xtick.major.pad: 10
@@ -115,14 +107,14 @@ xtick.major.width: 1
 xtick.minor.size: 0
 xtick.minor.width: .5
 
-ytick.color: mDarkTeal
+ytick.color: 23373b
 ytick.labelsize: 8
 ytick.direction: out
 ytick.major.pad: 10
 ytick.major.size: 0
 ytick.major.width: 1
 ytick.minor.size: 0
-ytick.minor.width: .5 
+ytick.minor.width: .5
 
 ```
 
