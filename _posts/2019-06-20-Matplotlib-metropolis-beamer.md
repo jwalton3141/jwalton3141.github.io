@@ -8,7 +8,7 @@ comments: true
 
 [Beamer](http://anorien.csc.warwick.ac.uk/mirrors/CTAN/macros/latex/contrib/beamer/doc/beameruserguide.pdf) is a great tool to make presentations with, and is *indispensable* to those who need to typeset mathematics within their slides. Beamer is actually just a [LaTeX](https://www.latex-project.org/about/) document class, so its syntax and setup is familiar to those who have experience working with TeX and friends.
 
-Despite Beamer's popularity in industry and academia, the default theme options are, to put it politely, lacking. The default themes look cluttered, clunky and out of date. Enter here, [Metropolis](http://mirrors.ibiblio.org/CTAN/macros/latex/contrib/beamer-contrib/themes/metropolis/doc/metropolistheme.pdf). Metropolis is a modern Beamer theme which looks minimal, stylish and professional, and has become my go-to beamer theme.
+Despite Beamer's popularity in industry and academia, the default theme options are, to put it politely, lacking. The default themes look cluttered, clunky and out of date. Enter here: [Metropolis](http://mirrors.ibiblio.org/CTAN/macros/latex/contrib/beamer-contrib/themes/metropolis/doc/metropolistheme.pdf). Metropolis is a modern Beamer theme which looks minimal, stylish and professional, and has become my go-to beamer theme.
 
 <img src="/assets/metropolis/metropolis_example.png" alt="Example style of metropolis theme" class="center">
 
@@ -16,9 +16,9 @@ Despite Beamer's popularity in industry and academia, the default theme options 
 
 Recently, I was busy creating a presentation with beamer and the metropolis theme. The presentation was coming along well, and in my own biased opinion I thought the presentation had a certain aesthetic charm.
 
-This was until I paid more attention to the figures I'd included. By themselves the figures were more than acceptable, but once inserted into the presentation they became a little jarring. The fonts in my plots were serif, yet metropolis was using a sans-serif font. I'd set my axis labels, titles etc. in a black font. Yet, metropolis sets text in a colour it calls ```mDarkTeal```. I was also distressed by the off-white background of the metropolis slides. My figures had a white facecolor, which meant all the plots I'd included had a white box around them.
+This was until I paid more attention to the figures I'd included. By themselves the figures looked good, but once inserted into the presentation they clashed with the metropolis theme. The fonts in my plots were serif, yet metropolis was using a sans-serif font. I'd set my axis labels, titles etc. in a black font. Yet, metropolis sets text in a colour it calls ```mDarkTeal```. I was also distressed by the off-white background of the metropolis slides. My figures had a white facecolor, which meant all the plots I'd included had a white box around them.
 
-It would be a fair criticism to say that these styling concerns were somewhat anal and obsessive. But this wouldn't be enough to derail my tyrannous rule over attention to detail.
+There are many things I can live with, but poorly integrated graphics in a research presentation isn't one of them.
 
 <img src="/assets/metropolis/output-1.png" alt="Default plots don't blend great" class="center">
 
@@ -30,7 +30,7 @@ Easy right? Well, almost. I think the pgf backend of matplotlib is great, but re
 
 This memory issue isn't a huge problem, and there are ways around it. If you're compiling with pdfLaTeX one solution is to increase the main memory limit. Another solution would be to compile with luaLaTeX, which can dynamically alter its memory limit as needed.
 
-Still though, my work machine doesn't have a luaLaTeX build, and I didn't want to start messing around with pdfLaTeX's memory limit. I was hoping for a pure matplotlib solution. And so the search continued
+Still, though, my work machine doesn't have a luaLaTeX build, and I didn't want to start messing around with pdfLaTeX's memory limit. I was hoping for a pure matplotlib solution. And so the search continued
 
 ## Attempt #2
 
@@ -38,9 +38,11 @@ I'd heard whisperings about the [matplotlib2tikz](https://pypi.org/project/matpl
 
 ## An *actual* solution
 
-Aha, and here our rollercoaster ride rolls into a satisfying matplotlib-based ending. I'd become aware of [the LaTeX package FiraSans](https://ctan.org/tex-archive/fonts/fira?lang=en), and figured I could add this into the [rcParam](https://matplotlib.org/users/customizing.html#matplotlib-rcparams) ```text.latex.preamble``` to match my fonts between metropolis and matplotlib. I could also alter the rcParams such that all text was set in the ```mDarkTeal``` colour. The finishing touch was to set the ```savefig.facecolor``` to the offwhite background of the metropolis theme.
+Aha, and here our rollercoaster ride rolls into a satisfying matplotlib-based ending. I'd become aware of [the LaTeX package FiraSans](https://ctan.org/tex-archive/fonts/fira?lang=en), and figured I could add this into the [rcParam](https://matplotlib.org/users/customizing.html#matplotlib-rcparams) ```text.latex.preamble``` to match my fonts between metropolis and matplotlib. I could also alter the rcParams such that all text was set in the ```mDarkTeal``` colour. The finishing touch was to set the ```savefig.facecolor``` to the off white background of the metropolis theme.
 
-Rather than altering these rcParams in every one of my plotting routines, the proper solution here was to create a [matplotlib style sheet](https://matplotlib.org/users/customizing.html#using-style-sheets). The style sheets are burrowed away in a warren of directories and subdirectories. To find yours you'll need to find the path to your python distribution, and from there work your way down to ```lib/python3.6/site-packages/matplotlib/mpl-data/stylelib```. Here I created the file ```metropolis.mplstyle``` with the contents:
+<img src="/assets/metropolis/output-2.png" class="center" alt="These plots blend much nicer">
+
+Rather than altering these rcParams in every one of my plotting routines, the proper solution here was to create a [matplotlib style sheet](https://matplotlib.org/users/customizing.html#using-style-sheets). These allow a user to very quickly change a number of styling aspects of their plot. The style sheets are burrowed away in a warren of directories and subdirectories. To find yours you'll need to find the path to your python distribution, and from there work your way down to ```lib/python3.6/site-packages/matplotlib/mpl-data/stylelib```. Here I created the file ```metropolis.mplstyle``` with the contents:
 
 ```py
 # Matplotlib style file to create plots that integrate nicely
@@ -124,6 +126,5 @@ ytick.minor.width: .5
 
 ```
 
-<img src="/assets/metropolis/output-2.png" class="center" alt="These plots blend much nicer">
+Now, to make figures which integrate seemlessly with the metropolis theme, it's simply enough to include the line ```plt.style.use('metropolis')``` at the top of any plotting scripts. I like this solution as it's super simple to use, re-use and the results look great.
 
-Now, to make figures which integrate seemlessly with the metropolis theme, it's simply enough to include the line ```plt.style.use('metropolis')``` at the top of any plotting scripts. I like this solution as it's super simple to use and the results really are satisfying.
