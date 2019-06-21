@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Styling matplotlib graphics for the metropolis beamer theme
-image: https://jwalton3141.github.io/assets/metropolis/metropolis_example.png
+image: https://jwalton3141.github.io/assets/metropolis/output-2.png
 mathjax: true
 comments: true
 ---
