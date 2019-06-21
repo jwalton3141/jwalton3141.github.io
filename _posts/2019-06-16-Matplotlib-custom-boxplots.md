@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Matplotlib boxplots with custom percentiles
-image: https://jwalton3141.github.io/assets/
+image: https://jwalton3141.github.io/assets/boxplots/full_solution.png
 mathjax: true
 comments: true
 ---
@@ -40,7 +40,7 @@ stats['C']['q1'], stats['C']['q3'] = np.percentile(data, [25, 75])
 
 fig, ax = plt.subplots(1, 1)
 # Plot boxplots from our computed statistics
-ax.bxp([stats['A'], stats['B'], stats['C']], positions=range(3))
+bp = ax.bxp([stats['A'], stats['B'], stats['C']], positions=range(3))
 
 # Colour the lines in the boxplot blue
 for element in bp.keys():
@@ -213,7 +213,11 @@ stats['C'] = my_boxplot_stats(data, labels='C', percents=[25, 75])[0]
 
 fig, ax = plt.subplots(1, 1)
 # Plot boxplots from our computed statistics
-ax.bxp([stats['A'], stats['B'], stats['C']], positions=range(3))
+bp = ax.bxp([stats['A'], stats['B'], stats['C']], positions=range(3))
+
+# Colour the lines in the boxplot blue
+for element in bp.keys():
+    plt.setp(bp[element], color='C0')
 ```
 See that with this solution the whiskers are adjusted in our function based on our selected percentiles:
 
