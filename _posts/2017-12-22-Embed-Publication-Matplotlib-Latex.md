@@ -12,32 +12,32 @@ So, if you care about your research (and, since you're here, I'm going to take t
 
 This post will introduce the essential skills and ideas you'll need to produce publication-quality figures using the Python plotting package [matplotlib](https://matplotlib.org/). We'll learn how to seamlessly embed figures into [LaTeX](https://www.latex-project.org/about/) documents and [beamer presentations](https://ctan.org/pkg/beamer?lang=en). Minimum working examples will be provided to fully illustrate figure production.
 
-It is assumed that the reader already has some familiarity with matplotlib, however, more advanced ability is not assumed. References and links will be provided to relevant literature and further reading.
+It is assumed that the reader already has some familiarity with matplotlib. References and links will be provided to relevant literature and further reading.
 
 # Colour and styling
 
-One of the first things that a reader will notice about your figures is their colour scheme and styling. Many matplotlib users are languishing behind the times with an old install of the package. More recent releases of matplotlib (>= v2.0) feature improved styling. [This excellent talk from Scipy's 2015 conference](https://www.youtube.com/watch?v=xAoljeRJ3lU]) delves into some of the theory behind the new default colourmap. If you aren't sure how to get the latest install, [refer to the documentation provided by matplotlib](https://matplotlib.org/users/installing.html).
+One of the first things that a reader will notice about your figures is theicoir colour scheme and styling. Many matplotlib users are languishing behind the times with an old install of the package. More recent releases of matplotlib (>= v2.0) feature improved styling. [This excellent talk from Scipy's 2015 conference](https://www.youtube.com/watch?v=xAoljeRJ3lU]) delves into some of the theory behind the new default colourmap. If you aren't sure how to get the latest install, you can [refer to the documentation provided by matplotlib](https://matplotlib.org/users/installing.html).
 
 [![old_style](/assets/publication_quality/old_style.png "Old default"){:class="img-responsive"}](https://matplotlib.org/devdocs/gallery/style_sheets/style_sheets_reference.html)
 [![new_style](/assets/publication_quality/new_style.png "New default"){:class="img-responsive"}](https://matplotlib.org/devdocs/gallery/style_sheets/style_sheets_reference.html)
 
 
-If you remain unhappy with the default styling, matplotlib provides [many different style sheets for you to try out](https://matplotlib.org/devdocs/gallery/style_sheets/style_sheets_reference.html). Alternatively you could use
+Matplotlib also provides [many different style sheets for you to try out](https://matplotlib.org/devdocs/gallery/style_sheets/style_sheets_reference.html). You can list the available styles with
 ```py
 import matplotlib.pyplot as plt
 plt.style.available
 ```
-to list our style options.
 
 Style sheets allow the user to effortlessly swap between styles without having to alter their plotting routines. As an example, to change to the [seaborn](https://seaborn.pydata.org/) style we would use ```plt.style.use('seaborn')```.
 
 # Seamless embedding in LaTeX
 
-Whether you wish to pen a research paper, your doctoral thesis or a report for a colleague, many will wish to embed figures from matplotlib into a [LaTeX](https://www.latex-project.org/about/) document. To maintain the desired aspect ratio of your figures, to avoid unwanted scaling and to allow font size to be matched between figure and the body of your text, we must learn to set the dimensions of your figure manually. Later in this post we shall discuss the best file formats to save and preserve your new figures. Finally we show how to insert your figures into LaTeX.
+It's relatively easy to get our figures to blend nice with our LaTeX document. However, it isn't going to happen by accident. In this section we'll cover the two key ingredients for a well-embedded plot: determining our desired figure dimensions in matplotlib and using LaTeX to typeset the text in our figure.
+Later in this post we shall also discuss the best file formats to save and preserve your new figures. Finally we will see how to insert these figures into LaTeX.
 
 ## Determining figure size
 
-The key to seamlessly blending your matplotlib figures into your LaTeX document is in determining the desired dimensions of the figure *before* creation. In this way, when you insert your figure it will not need to be resized, and therefore font and aspect ratio will remain true to your specifications. The figure you produce with matplotlib will be the *exact* figure you see in your LaTeX document.
+The key to seamlessly blending your matplotlib figures into your LaTeX document is in determining the desired dimensions of the figure *before* creation. In this way, when you insert your figure it will not need to be resized, and therefore the fontsize and aspect ratio won't be altered. The figure you produce with matplotlib will be the *exact* figure you see in your LaTeX document.
 
 Our first step to creating appropriately sized figures is to determine the textwidth of ourLaTeX document. To do this we can make use of the ```\showthe``` command. If we wished to determine the width of a 10pt report, we could do so by compiling this dummy ```.tex``` file:
 ```tex
@@ -122,7 +122,7 @@ You may find it useful to predefine widths which you use regularly to your ```se
 
 ## Text rendering with LaTeX
 
-To really make our figures blend with our document we need the font to match between our figure and the body of our text. [This topic is well-covered in matplotlib's documentation](https://matplotlib.org/users/usetex.html), though I decided to cover it here for completeness.
+To really make our figures blend with our document we need the font to match between our figure and the body of our text. [This topic is well-covered in matplotlib's documentation](https://matplotlib.org/users/usetex.html), though I cover it here for completeness.
 
 We shall use LaTeX to render the text in our figures by updating our [```rc settings```](http://matplotlib.org/users/customizing.html#the-matplotlibrc-file). This update can also be used to ensure that the document and figure use the same font sizes. The example below shows how to update ```rcParams``` to use LaTeX to render your text:
 ```py
@@ -168,7 +168,7 @@ rcParams can be used to control many other aspects of your figures. Run ```mpl.r
 
 It's often easier to handle subfigures at the matplotlib level, rather than within LaTeX. To insert plots with subfigures we need to understand how to adjust figure dimensions for multiple axes.
 
-Consider a figure containing subfigures arranged into 5 rows and 2 columns. It's easy to imagine (if you can't, try it for yourself) how using our previously defined ```set_size``` will not handle plots with multiple axes.
+Consider a figure containing subfigures arranged into 5 rows and 2 columns. It's easy to imagine (if you can't, try it for yourself) how using our previously defined ```set_size``` will not handle plots with multiple axes well.
 
 Fortunately, our function is easy to adapt. Simply add the default argument ```subplot=[1, 1]``` to the function definition. Along with this, you must change the line which calculates the figure height to ```fig_height_in = fig_width_in * golden_ratio * (subplot[0] / subplot[1])```. We'd initialise a figure with 5 rows and 2 columns of axes as ```fig, ax = plt.subplots(5, 2, figsize=set_size(width, subplot=[5, 2]))```.
 
