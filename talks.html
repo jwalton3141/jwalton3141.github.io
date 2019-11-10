@@ -1,0 +1,22 @@
+---
+layout: default
+title: It's more fun to compute
+image: https://jwalton3141.github.io/assets/background.png
+---
+
+<div id="home">
+  <h1>Talks</h1>
+
+  <ul class="talks", style="list-style-type:none">
+    {% assign ordered_talks = site.talks | sort:"title" %}
+    {% for talk in ordered_talks %}
+      <li><a href="{{ site.baseurl }}{{ talk.slides }}">{{ talk.title }}</a></li>
+
+      <div class="entry">
+        <p>{{ talk.content | remove: '<p>' | remove: '</p>' }} <br />
+      </div>
+
+    {% endfor %}
+
+  </ul>
+</div>

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 3 useful Python decorators
-image: https://jwalton3141.github.io/assets/background.png
+image: https://jwalton3141.github.io/assets/posts/background.png
 mathjax: false
 comments: true
 ---

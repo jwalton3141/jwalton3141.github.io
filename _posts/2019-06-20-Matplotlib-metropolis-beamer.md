@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Matplotlib graphics for the metropolis beamer theme
-image: https://jwalton3141.github.io/assets/metropolis/output-2.png
+image: https://jwalton3141.github.io/assets/posts/metropolis/output-2.png
 mathjax: true
 comments: true
 ---
@@ -10,7 +10,7 @@ comments: true
 
 Despite Beamer's popularity in industry and academia, the default theme options are, to put it politely, lacking. The default themes look cluttered, clunky and out of date. Enter here: [Metropolis](http://mirrors.ibiblio.org/CTAN/macros/latex/contrib/beamer-contrib/themes/metropolis/doc/metropolistheme.pdf). Metropolis is a modern Beamer theme which looks minimal, stylish and professional, and has become my go-to beamer theme.
 
-<img src="/assets/metropolis/metropolis_example.png" alt="Example style of metropolis theme" class="center">
+<img src="/assets/posts/metropolis/metropolis_example.png" alt="Example style of metropolis theme" class="center">
 
 # Integration with matplotlib
 
@@ -20,7 +20,7 @@ This was until I paid more attention to the figures I'd included. By themselves 
 
 There are many things I can live with, but poorly integrated graphics in a research presentation isn't one of them.
 
-<img src="/assets/metropolis/output-1.png" alt="Default plots don't blend great" class="center">
+<img src="/assets/posts/metropolis/output-1.png" alt="Default plots don't blend great" class="center">
 
 ## An obvious solution
 
@@ -40,7 +40,7 @@ I'd heard whisperings about the [matplotlib2tikz](https://pypi.org/project/matpl
 
 Aha, and here our rollercoaster ride rolls into a satisfying matplotlib-based ending. I'd become aware of [the LaTeX package FiraSans](https://ctan.org/tex-archive/fonts/fira?lang=en), and figured I could add this into the [rcParam](https://matplotlib.org/users/customizing.html#matplotlib-rcparams) ```text.latex.preamble``` to match my fonts between metropolis and matplotlib. I could also alter the rcParams such that all text was set in the ```mDarkTeal``` colour. The finishing touch was to set the ```savefig.facecolor``` to the off white background of the metropolis theme.
 
-<img src="/assets/metropolis/output-2.png" class="center" alt="These plots blend much nicer">
+<img src="/assets/posts/metropolis/output-2.png" class="center" alt="These plots blend much nicer">
 
 Rather than altering these rcParams in every one of my plotting routines, the proper solution here was to create a [matplotlib style sheet](https://matplotlib.org/users/customizing.html#using-style-sheets). These allow a user to very quickly change a number of styling aspects of their plot. The style sheets are burrowed away in a warren of directories and subdirectories. To find yours you'll need to find the path to your python distribution, and from there work your way down to ```lib/python3.6/site-packages/matplotlib/mpl-data/stylelib```. Here I created the file ```metropolis.mplstyle``` with the contents:
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Plot circular data with matplotlib
-image: https://jwalton3141.github.io/assets/rose_plots/polar_radians.png
+image: https://jwalton3141.github.io/assets/posts/rose_plots/polar_radians.png
 mathjax: true
 comments: true
 ---

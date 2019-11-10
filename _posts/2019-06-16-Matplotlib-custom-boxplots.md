@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Matplotlib boxplots with custom percentiles
-image: https://jwalton3141.github.io/assets/boxplots/full_solution.png
+image: https://jwalton3141.github.io/assets/posts/boxplots/full_solution.png
 mathjax: true
 comments: true
 ---
@@ -49,7 +49,7 @@ for element in bp.keys():
 
 However, viewing the plot produced we see that altering ```q1``` and ```q3``` whilst leaving the whiskers unchanged may not be a sensible idea. You could counter this by recomputing eg. ```stats['A']['iqr']``` and the whisker locations ```stats['A']['whishi']``` and ```stats['A']['whislo']```.
 
-<img src="/assets/boxplots/quick_solution.png" alt="Results of quick solution" class="center">
+<img src="/assets/posts/boxplots/quick_solution.png" alt="Results of quick solution" class="center">
 
 ## A more complete solution
 
@@ -221,4 +221,4 @@ for element in bp.keys():
 ```
 See that with this solution the whiskers are adjusted in our function based on our selected percentiles:
 
-<img src="/assets/boxplots/full_solution.png" alt="full solution" class="center">
+<img src="/assets/posts/boxplots/full_solution.png" alt="full solution" class="center">

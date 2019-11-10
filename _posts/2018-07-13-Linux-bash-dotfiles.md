@@ -1,7 +1,7 @@
 ---
 layout: post
 title: How to customise your bash prompt
-image: https://jwalton3141.github.io/assets/dotfiles/zsh_prompt.png
+image: https://jwalton3141.github.io/assets/posts/dotfiles/zsh_prompt.png
 mathjax: false
 comments: true
 ---
@@ -16,15 +16,15 @@ Dieter Rams, of the well-known electronics manufacturer Braun, once said that "g
 
 Below is my prompt at its most basic. As I'm logged in as my usual user and not in an active ssh session, the prompt does not remind me where or who I am. The default user name is defined in ```.bashlocal``` as ```local_username```, and the prompt is set to only display the host if in an active ssh session.
 
-<img width="725" height="441" class="img-responsive" src="/assets/dotfiles/empty_prompt.png" style="display: block; margin-left: auto; margin-right: auto; height: auto">
+<img width="725" height="441" class="img-responsive" src="/assets/posts/dotfiles/empty_prompt.png" style="display: block; margin-left: auto; margin-right: auto; height: auto">
 
 So we see, once I ssh into a different machine the prompt is set to remind me this. Similarly, I would be reminded if I were to enter a session as a different user.
 
-<img width="725" height="441" src="/assets/dotfiles/host_name.png" style="display: block; margin-left: auto; margin-right: auto; height: auto">
+<img width="725" height="441" src="/assets/posts/dotfiles/host_name.png" style="display: block; margin-left: auto; margin-right: auto; height: auto">
 
 Another quality I desired was the two line prompt. If you're several directories deep and the command you're writing becomes too long, it will be wrapped around onto the next line. This makes the command difficult to read and can be a real pain. It's much more desirable to display your current working directory on one line and your command a separate and new line. The example below shows how this setup avoids wrapping long commands.
 
-<img width="725" height="441" src="/assets/dotfiles/two_lines.png" style="display: block; margin-left: auto; margin-right: auto; height: auto">
+<img width="725" height="441" src="/assets/posts/dotfiles/two_lines.png" style="display: block; margin-left: auto; margin-right: auto; height: auto">
 
 ## Functionality
 
