@@ -37,7 +37,7 @@ if( window.location.search.match( /print-pdf/gi ) ) {
 
 <!-- Loading the mathjax macro -->
 <!-- Load mathjax -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
     <!-- MathJax configuration -->
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -16730,8 +16730,9 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="GitLab-for-MSP-students">GitLab for MSP students<a class="anchor-link" href="#GitLab-for-MSP-students">&#182;</a></h2><p>If you are a student in the department of Mathematics, Statistics and Physics you have access to the school's <a href="https://mas-gitlab.ncl.ac.uk/users/sign_in">GitLab server</a>. THis is similar to GitHub</p>
+<h2 id="GitLab-for-MSP-students">GitLab for MSP students<a class="anchor-link" href="#GitLab-for-MSP-students">&#182;</a></h2><p>If you are a student in the department of Mathematics, Statistics and Physics you have access to the school's <a href="https://mas-gitlab.ncl.ac.uk/users/sign_in">GitLab server</a>. This is similar to GitHub.</p>
 <p>You already have an account - log in using your usual uni email and password.</p>
+<p>The <a href="https://gitlab.com/help/user/index.md">GitLab documentation</a> provides additional information.</p>
 <figure>
   <img src="fig/setup/gitlab.png" alt="Drawing" style="height:500px;"/>
   <figcaption>Log in page for the MSP school's GitLab server.</figcaption>
@@ -16745,7 +16746,8 @@ a.anchor-link {
 <h2 id="Demo">Demo<a class="anchor-link" href="#Demo">&#182;</a></h2>
 </div>
 </div>
-</div></section><section>
+</div><aside class="notes">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -16760,7 +16762,8 @@ a.anchor-link {
 
 </div>
 </div>
-</div></section><section>
+</div>
+</aside></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -16800,16 +16803,6 @@ a.anchor-link {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Demo">Demo<a class="anchor-link" href="#Demo">&#182;</a></h2>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Exercise">Exercise<a class="anchor-link" href="#Exercise">&#182;</a></h2><ul>
-<li>Install Git on your machine</li>
-</ul>
-
 </div>
 </div>
 </div></section></section><section><section>
@@ -16976,19 +16969,6 @@ a.anchor-link {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Demo">Demo<a class="anchor-link" href="#Demo">&#182;</a></h2>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Exercises">Exercises<a class="anchor-link" href="#Exercises">&#182;</a></h2><ul>
-<li><p>Create a repository using GitHub, including a README.md and clone it so you have a copy locally</p>
-</li>
-<li><p>Initialise a local repository using Git</p>
-</li>
-</ul>
-
 </div>
 </div>
 </div></section></section><section><section>
@@ -18035,9 +18015,10 @@ But the Mummy will appreciate the lack of humidity
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Branching-in-Git">Branching in Git<a class="anchor-link" href="#Branching-in-Git">&#182;</a></h2><p>To create a new branch on your local machine use the following command</p>
-<div class="highlight"><pre><span></span>$ git -b new_branch_name
+<div class="highlight"><pre><span></span>$ git checkout -b new_branch_name
 </pre></div>
-<p>Change the working branch using</p>
+<p>This will switch you onto the new branch.
+To change your working branch use</p>
 <div class="highlight"><pre><span></span>$ git checkout new_branch_name
 </pre></div>
 <p>Push the branch to the remote repository using</p>
@@ -18067,6 +18048,8 @@ But the Mummy will appreciate the lack of humidity
 <li><p>Different roles - maintainer, developer etc.</p>
 </li>
 <li><p>Using branches on collaborative projects</p>
+</li>
+<li><p>Introduce workflows</p>
 </li>
 </ul>
 
@@ -18103,6 +18086,61 @@ But the Mummy will appreciate the lack of humidity
   <img src="fig/collaborate/collaborate_branching.png" alt="Drawing" style="height:300px;"/>
   <figcaption>An example branching structure used on a collaborative project</figcaption>
 </figure>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Workflows">Workflows<a class="anchor-link" href="#Workflows">&#182;</a></h2><p>A  workflow is the sequence of processes through which a piece of work passes from initiation to completion.</p>
+<p>Every project will have its own recommendation for how users should use Git to work efficiently.</p>
+<p>More information on workflows for collaborations can be found <a href="https://www.atlassian.com/git/tutorials/comparing-workflows">here</a>.</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Embedded-version-information">Embedded version information<a class="anchor-link" href="#Embedded-version-information">&#182;</a></h1>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>What we will learn:</p>
+<ul>
+<li>How to embed the version information in your executables</li>
+</ul>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Version-information">Version information<a class="anchor-link" href="#Version-information">&#182;</a></h2><p>You can keep track of which version of your code produced different outputs by embedding the information in your executables.</p>
+<p>From there this can be included in any output text or data files - this makes it very simple to check exactly what version of a code generated a certain output.</p>
+<p>An example output file might be something like the following.</p>
+
+<pre><code>git version - v0.0.1
+git commit  - 65c92648502e5693f5b530e798d10e10895682d8
+git date    - 2019-11-13T20:13:04+13:00
+build date  - 2019-11-13T21:04:55+13:00</code></pre>
+<p>Here are some links which provide more information on <a href="https://nullpointer.io/post/easily-embed-version-information-in-software-releases/">including version information in your output</a> and <a href="https://pypi.org/project/setuptools-scm/">a package in python</a> which helps manage your versions.</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Tags-and-versions">Tags and versions<a class="anchor-link" href="#Tags-and-versions">&#182;</a></h2><p>Tags point to specific point in the Git history. A tag is like a branch that does not change. Unlike branches, tags, after being created, have no further history of commits.</p>
+<p>More information on tags can be found <a href="https://www.atlassian.com/git/tutorials/inspecting-a-repository/git-tag">here</a>.</p>
+<p>Versions of your project are useful for identifying which changes have been made. These are given as numbers indicating major, minor and patch changes, for example <code>2.0.1</code>.</p>
+<p>More information on versioning can be found <a href="https://semver.org/">here</a> and a python package which identifies versions and declares dependencies can be found <a href="https://www.python.org/dev/peps/pep-0440/">here</a>.</p>
+
 </div>
 </div>
 </div></section></section><section><section>
@@ -18214,6 +18252,7 @@ But the Mummy will appreciate the lack of humidity
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Resources">Resources<a class="anchor-link" href="#Resources">&#182;</a></h2><p>These slides are available on <a href="https://jwalton.info/teaching/">Jack's teaching website</a></p>
 <p><a href="git_cheat_sheet.pdf">Cheat sheet for git commands</a></p>
+<p><a href="https://www.atlassian.com/git">Atlassian</a> provide good resources and tutorials on using git.</p>
 <p>If you are and Windows user and prefer a graphical interface for Git then you may want to download Git Extensions (for free!). Here is a <a href="git_ext/git_extensions.slides.html">short guide</a> to help you get started.</p>
 <p>Interesting dropbox vs git blog: <a href="https://michaelstepner.com/blog/git-vs-dropbox/">https://michaelstepner.com/blog/git-vs-dropbox/</a></p>
 
@@ -18227,17 +18266,15 @@ But the Mummy will appreciate the lack of humidity
 
 </div>
 </div>
-</div>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Feedback">Feedback<a class="anchor-link" href="#Feedback">&#182;</a></h2><ul>
-<li><p>You should receive an email from PGRDP requesting feedback.</p>
-</li>
-<li><p>Please do leave feedback</p>
-</li>
-<li><p>This is the first time we've taught this workshop and any feedback would be very useful</p>
-</li>
+<li>You should receive an email from PGRDP requesting feedback.</li>
+</ul>
+<ul>
+<li>Please do leave feedback - we find this very useful!</li>
 </ul>
 
 </div>
