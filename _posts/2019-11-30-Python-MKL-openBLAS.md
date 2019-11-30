@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Speed-up numpy with Intel's Math Kernel Library (MKL)
+comments: true
 ---
 
 The [numpy](https://numpy.org/) package is at the core of scientific computing
