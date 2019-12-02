@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Speed-up numpy with Intel's Math Kernel Library (MKL)
+image: /assets/posts/BLAS/np_fft.png
 comments: true
 ---
 
