@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Speed-up numpy with Intel's Math Kernel Library (MKL)
-image: /assets/posts/BLAS/np_fft.png
+image: /assets/posts/BLAS/linkedin_img.png
 comments: true
 ---
 
@@ -80,27 +80,26 @@ The comparison is made by computing a
 
 First, let's take a look at how Intel MKL performs on some basic linear algebra
 operations. From the graph below we see that Intel MKL has outperformed OpenBLAS
-for the functions we tested. In fact, computing the inverse and determinant of a
-matrix is over twice as fast with Intel. Neat. And recall that we haven't had to
+for the three functions we tested. In fact, computing the determinant of a
+matrix is over 8 times faster with Intel! Neat. And recall that we haven't had to
 change any of our python code to get these speed-ups. These speed-ups are, for
 all intents and purposes, free.
 
 ![](/assets/posts/BLAS/np_linalg.png)
 
-Next in line for inspection are numpy's fast fourier transform functions. I was
+Next in line for inspection are numpy's fast Fourier transform functions. I was
 really impressed with the performance of Intel MKL on these functions:
-`np.fft.fftn` was a huge _7x faster_ than the OpenBLAS linked numpy. If you're
-regularly using numpy to perform fast fourier transforms you'd really feel the
+`np.fft.fftn` was a huge _10x faster_ than the OpenBLAS linked numpy. If you're
+regularly using numpy to perform fast Fourier transforms you'd really feel the
 benefit here.
 
 ![](/assets/posts/BLAS/np_fft.png)
 
 Finally, it was the go of random number generation. These were the results that
 surprised me the most. All the distributions I tested were actually _slower_
-with Intel. This I certainly did not expect. The only redeeming factor for Intel
-here is when looking at the _efficiency_ of the random number generation; Intel
-used half the amount of CPU OpenBLAS did. However, since resources are not an
-issue for this test on my machine, OpenBLAS performs better here.
+with Intel. This I certainly did not expect. So, if you're using numpy to
+do lots of random number generation, then you'd be better of staying with
+OpenBLAS.
 
 ![](/assets/posts/BLAS/np_rand.png)
 
@@ -108,8 +107,8 @@ issue for this test on my machine, OpenBLAS performs better here.
 
 BLAS libraries are a great way to squeeze extra performance from numerically
 intensive schemes. However, which BLAS library you choose can affect the
-performance of your code.  In this post we compare the speed of numpy with
-OpenBLAS and numpy with Intel MKL.  The code I used for benchmarking is provided
+performance of your code. In this post we compare the speed of numpy with
+OpenBLAS and numpy with Intel MKL. The code I used for benchmarking is provided
 [here](/assets/posts/BLAS/intel_v_openblas.tar.gz), and so the reader is
 encouraged to run these same tests on their machine, to assess performance on
 their exact setup. On my machine, at least, I found that Intel outperformed
@@ -118,12 +117,12 @@ the random number generation.
 
 ### Post-script
 
-The results shown in the post were generated on my laptop, which has the
+The results shown in the post were generated on my work desktop, which has the
 following stats:
 
 ```
 Kernel Version: 5.3.0-22-generic
 OS Type: 64-bit
-Processors: 4 × Intel® Core™ i7-7500U CPU @ 2.70GHz
-Memory: 7.7 GiB of RAM
+Processors: 8 x Intel(R) Core(TM) i7-6700 CPU @ 3.40GHz
+Memory: 15.5G of RAM
 ```
