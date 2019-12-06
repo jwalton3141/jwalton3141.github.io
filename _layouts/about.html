@@ -2,6 +2,7 @@
 <html lang="en-us">
   
   {% include head.html %}
+  {% seo %}
 
   <body>
     {% include page-header.html %}
@@ -11,6 +12,6 @@
       {{ content }}
 
     </section>
-
+	{% include analytics.html %}
   </body>
 </html>
