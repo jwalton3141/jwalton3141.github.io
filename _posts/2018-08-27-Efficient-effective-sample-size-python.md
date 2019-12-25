@@ -12,7 +12,7 @@ In this post I shall introduce the definition of the effective sample size (ESS)
 
 The statistician is often interested in drawing random samples from probability distributions. For nice, well-behaved distributions they can do this easily, and the draws made are all independent of one another. However, it is often of interest to draw from some nasty intractable distributions, from which we cannot easily sample. MCMC provides a way of making draws from these complex distributions. However, the samples made are not independent. 
 
-The effective sample size (ESS) is introduced as a notion to assess the `size' of a sample when the samples are correlated. As such, the ESS provides the practitioner a way to assess the output and efficiency of their MCMC scheme.
+The effective sample size (ESS) is introduced as a notion to assess the 'size' of a sample when the samples are correlated. As such, the ESS provides the practitioner a way to assess the output and efficiency of their MCMC scheme.
 
 ## Definition
 
