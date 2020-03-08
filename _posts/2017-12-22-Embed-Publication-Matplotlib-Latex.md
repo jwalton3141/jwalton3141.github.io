@@ -188,6 +188,7 @@ figsize=set_size(width, subplots=(5, 2)))```:
 <img src="/assets/posts/publication_quality/good_plot.png">
 </p>
 
+With the above amendments, your ```set_size``` function should resemble something like:
 ```py
 def set_size(width, fraction=1, subplots=(1, 1)):
     """ Set figure dimensions to avoid scaling in LaTeX.
