@@ -37,7 +37,7 @@ matplotlib will be the exact same figure that appears in our final document; no 
 no surprises.
 
 With scaling and text size taken care of, we can then instruct matplotlib to use LaTeX to
-typeset all the text elements in our plot. We can use then match the font in our
+typeset all the text elements in our plot. We can then match the font in our
 document body and plots. It's only a minor alteration, but its this attention to detail
 which separates the good from the bad from the ugly.
 
@@ -188,6 +188,7 @@ figsize=set_size(width, subplots=(5, 2)))```:
 <img src="/assets/posts/publication_quality/good_plot.png">
 </p>
 
+With the above amendments, your ```set_size``` function should resemble something like:
 ```py
 def set_size(width, fraction=1, subplots=(1, 1)):
     """ Set figure dimensions to avoid scaling in LaTeX.
