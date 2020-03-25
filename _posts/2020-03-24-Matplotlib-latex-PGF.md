@@ -6,16 +6,21 @@ mathjax: false
 comments: true
 ---
 
-Matplotlib's pgf backend is pretty great, allowing plots to be exported directly from
-python to pgf drawing commands. These drawing commands can be inserted directly into a
-LaTeX ```.tex``` document, and so the generated plot will be realised at compile time.
-This method of embedding plots into a LaTeX document allows a quick and easy method to
-ensure that fonts between your document body and plots match.
+Matplotlib's [pgf
+backend](https://matplotlib.org/3.1.1/tutorials/text/pgf.html#typesetting-with-xelatex-lualatex)
+is pretty great, allowing plots to be exported directly from python to [pgf
+drawing commands](https://sourceforge.net/projects/pgf/). These drawing
+commands can be inserted directly into a LaTeX ```.tex``` document, and so the
+generated plot will be realised at compile time.  This method of embedding
+plots into a LaTeX document allows a quick and easy method to ensure that fonts
+between your document body and plots match.
 
 ## Saving to pgf
 
-Matplotlib's pgf backend represents a non-interactive backend. This means that you won't
-be able to preview your plot in python, and instead have to export the plot before you can
+Matplotlib's pgf
+[backend](https://matplotlib.org/faq/usage_faq.html#what-is-a-backend)
+represents a non-interactive backend. This means that you won't be able to
+preview your plot in python, and instead have to export the plot before you can
 view it. You can change to the pgf backend as:
 
 ```py
@@ -80,8 +85,9 @@ obviously too wide for the document it sits in, and it has a rather unsatisfying
 aspect ratio.
 
 It's possible to scale our figure within LaTeX, using a `\scalebox` or `\resizebox`
-command. However, I prefer to determine my figure size within python. To do this we first
-determine the textwidth of our documentclass. We can do this using the `\showthe` command.
+command. However, I prefer to determine my figure size at the matplotlib end of things. To
+do this we first determine the textwidth of our documentclass. We can do this using the
+`\showthe` command.
 
 ```latex
 % your document class here
