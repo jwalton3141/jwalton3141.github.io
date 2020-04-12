@@ -11,9 +11,9 @@ through time. Often then, a statistician is interested in fitting such a model t
 data, with the intention of using the fitted model to make predictions about the future.
 
 If you've happened upon this post in all likelihood you're probably already familiar with
-autoregressive models and Stan. In this case you can skip straight onto the Stan code in
-the posterior predictives section. Otherwise, read on through and I'll provide a quick
-primer on AR models and posterior predictives.
+autoregressive models and Stan. In this case you can skip straight onto the Stan code [in
+the posterior predictives section](#posterior-predictives-in-stan) . Otherwise, read on
+through and I'll provide a quick primer on AR models and posterior predictives.
 
 All of the code used in this blog post to simulate the AR model, perform the parameter
 inference and visualise the output [is contained in this github
