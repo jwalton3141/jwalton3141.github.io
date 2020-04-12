@@ -15,6 +15,10 @@ autoregressive models and Stan. In this case you can skip straight onto the Stan
 the posterior predictives section. Otherwise, read on through and I'll provide a quick
 primer on AR models and posterior predictives.
 
+All of the code used in this blog post to simulate the AR model, perform the parameter
+inference and visualise the output [is contained in this github
+repo](https://github.com/jwalton3141/stan_AR_predictives)
+
 ## Autoregressive models
 
 An autoregressive model of order \\(p\\), denoted \\(AR(p)\\), can be expressed by the
