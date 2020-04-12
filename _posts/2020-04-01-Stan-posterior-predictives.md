@@ -5,10 +5,10 @@ mathjax: true
 comments: true
 ---
 
-Autoregressive (AR) models represent a popular type of statistical model. They are used to
-describe processes which evolve through time. Often then, a statistician is interested in
-fitting such a model to real data, with the intention of using the fitted model to make
-predictions about the future.
+[Autoregressive (AR) models](https://en.wikipedia.org/wiki/Autoregressive_model) represent
+a popular type of statistical model. They are used to describe processes which evolve
+through time. Often then, a statistician is interested in fitting such a model to real
+data, with the intention of using the fitted model to make predictions about the future.
 
 If you've happened upon this post in all likelihood you're probably already familiar with
 autoregressive models and Stan. In this case you can skip straight onto the Stan code in
@@ -34,8 +34,10 @@ observations.
 Presented with observations \\((x_1,\ldots,x_n)^T\\) the statistician is then tasked with
 determining values of \\(\alpha\\) and \\(\beta\\) which best describe the data. Of course
 \\(p\\), the order of the model, must also be determined. A crude method to estimate
-\\(p\\) is to assess autocorrelation plots. The order of the model can be estimated as the
-lag at which the autocorrelation drops below some threshold value.
+\\(p\\) is to assess [autocorrelation
+plots](https://www.itl.nist.gov/div898/handbook/eda/section3/autocopl.htm). The order of
+the model can be estimated as the lag at which the autocorrelation drops below some
+threshold value.
 
 ## Simulation studies
 
@@ -56,15 +58,17 @@ deviation of the distribution of \\(\epsilon_t\\).
 
 ## Fitting \\(AR(p)\\) models in Stan
 
-Stan, named after Stanislaw Ulam, is a probabilistic programming language wrote in C++.
-Stan can be used to perform parameter in a Bayesian framework. The job of the user is to
-specify how to target a given model's log-posterior density using Stan's modelling
-language.
+[Stan](https://mc-stan.org/), named after [Stanislaw
+Ulam](https://www.britannica.com/biography/Stanislaw-Ulam), is a probabilistic programming
+language wrote in C++.  Stan can be used to perform parameter in a Bayesian framework. The
+job of the user is to specify how to target a given model's log-posterior density using
+Stan's modelling language.
 
-With the model specified Stan implements the No-U-Turn-Sampler (NUTS), a variant of
-Hamiltonian Monte Carlo, to draw samples from the posterior distribution. Stan code to
-infer the parameters \\(\alpha\\) and \\(\beta\\) of an \\(AR(p)\\) model with normally
-distributed noise can be realised as:
+With the model specified Stan implements the [No-U-Turn-Sampler
+(NUTS)](https://arxiv.org/abs/1111.4246), a variant of [Hamiltonian Monte
+Carlo](https://arxiv.org/pdf/1701.02434.pdf), to draw samples from the posterior
+distribution. Stan code to infer the parameters \\(\alpha\\) and \\(\beta\\) of an
+\\(AR(p)\\) model with normally distributed noise can be realised as:
 ```
 data {
     // Order of AR process
@@ -104,11 +108,12 @@ model {
 The nice thing about the above model specification is that it does not hard-code the order
 of the model. As such this code can be used to fit AR models of any order.
 
-We can use the python interface to Stan, PyStan, to plot our realisations from the
-posterior.  The histograms below show our posterior beliefs for \\(\alpha\\) and
-\\(\beta_1\\), \\(\beta_2\\) and \\(\beta_3\\). The true values are represented by the
-vertical black lines. See that in all the cases we are able to accurately recover the true
-parameter values from the data alone.
+We can use the python interface to Stan,
+[PyStan](https://pystan.readthedocs.io/en/latest/getting_started.html), to plot our
+realisations from the posterior.  The histograms below show our posterior beliefs for
+\\(\alpha\\) and \\(\beta_1\\), \\(\beta_2\\) and \\(\beta_3\\). The true values are
+represented by the vertical black lines. See that in all the cases we are able to
+accurately recover the true parameter values from the data alone.
 
 <p align="center">
   <img src="/assets/posts/stan/AR3_hist_multi.png">
@@ -116,10 +121,11 @@ parameter values from the data alone.
 
 ## Posterior predictives in Stan
 
-Posterior predictive distributions represent our beliefs about the distribution of new
-data, given the data which we have already observed. We can use the ```generated
-quantities``` block in Stan to compute our posterior predictive distributions during
-parameter inference:
+[Posterior predictive
+distributions](https://en.wikipedia.org/wiki/Posterior_predictive_distribution) represent
+our beliefs about the distribution of new data, given the data which we have already
+observed. We can use the ```generated quantities``` block in Stan to compute our posterior
+predictive distributions during parameter inference:
 ```
 data {
     // Order of AR process
@@ -176,11 +182,12 @@ The mean of our posterior predictive distribution is given by the red line.  Alt
 posterior predictive mean makes for an informative point estimate, as Bayesians we are
 also interested in the uncertainty in our predictions.
 
-The two shaded green areas represent 50% and 95% credibility intervals of our posterior
-predictive beliefs. That is, we predict with probability 0.5 that the next data point,
-given the previous \\(p\\) data points, will lie in the darker-green region. Similarily,
-we believe with probability 0.95 that the next observed data point, given the \\(p\\)
-observations before it, will be contained in the lighter-green region.
+The two shaded green areas represent 50% and 95% [credibility
+intervals](https://en.wikipedia.org/wiki/Credible_interval) of our posterior predictive
+beliefs. That is, we predict with probability 0.5 that the next data point, given the
+previous \\(p\\) data points, will lie in the darker-green region. Similarily, we believe
+with probability 0.95 that the next observed data point, given the \\(p\\) observations
+before it, will be contained in the lighter-green region.
 
 <p align="center">
   <img src="/assets/posts/stan/AR3_predictives.png">
@@ -203,5 +210,4 @@ that the practitioner returns to assess *how well* the model fits the data. Ther
 different ways to assess model fit. One such method is to make use of a posterior
 predictive distribution. Stan code was provided to compute the posterior predictive
 distribution of an autoregressive model with order \\(p\\).
-
 
