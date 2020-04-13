@@ -69,7 +69,7 @@ With the model specified Stan implements the [No-U-Turn-Sampler
 Carlo](https://arxiv.org/pdf/1701.02434.pdf), to draw samples from the posterior
 distribution. Stan code to infer the parameters \\(\alpha\\) and \\(\beta\\) of an
 \\(AR(p)\\) model with normally distributed noise can be realised as:
-```
+```cpp
 data {
     // Order of AR process
     int<lower=0> P;
@@ -126,7 +126,7 @@ distributions](https://en.wikipedia.org/wiki/Posterior_predictive_distribution) 
 our beliefs about the distribution of new data, given the data which we have already
 observed. We can use the ```generated quantities``` block in Stan to compute our posterior
 predictive distributions during parameter inference:
-```
+```cpp
 data {
     // Order of AR process
     int<lower=0> P;
