@@ -16,10 +16,10 @@ which seeks to understand how macro-level structures, such as flocks, schools
 and crowds, can arise from simple interactions between individuals.
 
 On StackOverflow I'm [user
-jwalton](https://stackoverflow.com/users/11021886/jwalton). I try contribute to
-SO whenever I get the time (which seems to be less and less often these days!).
-I maintain a [professional profile](https://www.linkedin.com/in/jwalton93/)
-over on LinkedIn.
+jwalton](https://stackoverflow.com/users/11021886/jwalton?tab=profile). I try
+contribute to SO whenever I get the time (which seems to be less and less often
+these days!). I maintain a [professional
+profile](https://www.linkedin.com/in/jwalton93/) over on LinkedIn.
 
 I'm also regularly employed as a subcontractor for [Jumping Rivers
 Ltd.](https://www.jumpingrivers.com/)
