@@ -4,11 +4,25 @@ layout: about
 
 # About Me
 
-<img style="float: left; padding-right:20px" width="165" height="145" src="/assets/portrait.jpg">
+<img style="float: left; padding-right:20px" width="165" height="145"
+src="/assets/portrait.jpg">
 
-My name is Jack Walton. I'm a PhD student at the University of Newcastle upon Tyne, where I'm based in the [School of Maths, Stats and Physics](https://www.ncl.ac.uk/maths-physics/research/). My research focuses on collective behaviour, a subject which seeks to understand how individuals such as birds, fish or humans interact in groups to produce macro-level structures such as flocks, schools and crowds.
+Hi, my name is Jack. I'm a PhD student at Newcastle University, UK, where I'm
+based in the [School of Maths, Stats and
+Physics](https://www.ncl.ac.uk/maths-physics/research/). My research focuses on
+[collective
+behaviour](https://science.sciencemag.org/content/284/5411/99.full), a subject
+which seeks to understand how macro-level structures, such as flocks, schools
+and crowds, can arise from simple interactions between individuals.
 
-You may also find me over at [Stack Overflow](https://stackoverflow.com/users/11021886/ralph), where I contribute whenever I get the time. When I'm not too busy being a full-time student, I lead the occasional programming workshop for [Jumping Rivers](https://www.jumpingrivers.com/), a local data science company.
+On StackOverflow I'm [user
+jwalton](https://stackoverflow.com/users/11021886/jwalton). I try contribute to
+SO whenever I get the time (which seems to be less and less often these days!).
+I maintain a [professional profile](https://www.linkedin.com/in/jwalton93/)
+over on LinkedIn.
+
+I'm also regularly employed as a subcontractor for [Jumping Rivers
+Ltd.](https://www.jumpingrivers.com/)
 
 ### Contact me
 
