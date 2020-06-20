@@ -85,7 +85,7 @@ convert from pts to inches and to determine an aesthetic figure height using the
 ratio:
 ```py
 def set_size(width, fraction=1):
-    """ Set figure dimensions to avoid scaling in LaTeX.
+    """Set figure dimensions to avoid scaling in LaTeX.
 
     Parameters
     ----------
@@ -156,15 +156,13 @@ to, or a beamer template. Our amended function may include the lines:
         width_pt = 426.79135
     elif width == 'beamer':
         width_pt = 307.28987
-    elif width == 'pnas':
-        width_pt = 246.09686
     else:
         width_pt = width
     # Width of figure
     fig_width_pt = width_pt * fraction
 ```
 
-## Handling multiple axes
+## Handling multiple Axes
 
 It's often easier to handle subfigures at the matplotlib level, rather than within LaTeX.
 To produce plots made of multiple subplots we need to reconsider our ```set_size```
@@ -179,10 +177,10 @@ ratios:
 </p>
 
 Fortunately, our function is easy to adapt. Simply add the default argument
-```subplots=(1, 1)``` to the function definition. Along with this, you must
-change the line which calculates the figure height to ```fig_height_in =
-fig_width_in * golden_ratio * (subplots[0] / subplots[1])```. We'd initialise a
-figure with 5 rows and 2 columns of axes as ```fig, ax = plt.subplots(5, 2,
+```subplots=(1, 1)``` to the definition of ```set_size```. Along with this, you must alter
+the line which calculates the figure height to ```fig_height_in = fig_width_in *
+golden_ratio * (subplots[0] / subplots[1])```. With this, we would initialise a figure
+with 5 rows and 2 columns of Axes as ```fig, ax = plt.subplots(5, 2,
 figsize=set_size(width, subplots=(5, 2)))```:
 
 <p align="center">
@@ -192,7 +190,7 @@ figsize=set_size(width, subplots=(5, 2)))```:
 With the above amendments, your ```set_size``` function should resemble something like:
 ```py
 def set_size(width, fraction=1, subplots=(1, 1)):
-    """ Set figure dimensions to avoid scaling in LaTeX.
+    """Set figure dimensions to avoid scaling in LaTeX.
 
     Parameters
     ----------
@@ -211,8 +209,6 @@ def set_size(width, fraction=1, subplots=(1, 1)):
         width_pt = 426.79135
     elif width == 'beamer':
         width_pt = 307.28987
-    elif width == 'pnas':
-        width_pt = 246.09686
     else:
         width_pt = width
 
@@ -235,20 +231,19 @@ def set_size(width, fraction=1, subplots=(1, 1)):
 
 ## Text rendering with LaTeX
 
-To really ensure our figures blend with our document we need the font to match between our
-figure and the body of our text. [This topic is well-covered in matplotlib's
-documentation](https://matplotlib.org/users/usetex.html), though I cover it here for
-completeness.
+To really make our figures blend into our document we need the font to match
+between our figure and the body of our text. [This topic is well-covered in
+matplotlib's documentation](https://matplotlib.org/users/usetex.html), though I
+cover it here for completeness.
 
 We shall use LaTeX to render the text in our figures by updating our [```rc
-settings```](http://matplotlib.org/users/customizing.html#the-matplotlibrc-file).  This
+settings```](http://matplotlib.org/users/customizing.html#the-matplotlibrc-file). This
 update can be used to ensure that our document and figure use the same font sizes. The
 example below shows how to update ```rcParams``` to use LaTeX to render your text:
 ```py
-""" A simple example of creating a figure with text rendered in LaTeX. """
+"""A simple example of creating a figure with text rendered in LaTeX."""
 
 import numpy as np
-import matplotlib as mpl
 import matplotlib.pyplot as plt
 from my_plot import set_size
 
@@ -256,29 +251,29 @@ from my_plot import set_size
 plt.style.use('seaborn')
 width = 345
 
-nice_fonts = {
-        # Use LaTeX to write all text
-        "text.usetex": True,
-        "font.family": "serif",
-        # Use 10pt font in plots, to match 10pt font in document
-        "axes.labelsize": 10,
-        "font.size": 10,
-        # Make the legend/label fonts a little smaller
-        "legend.fontsize": 8,
-        "xtick.labelsize": 8,
-        "ytick.labelsize": 8,
+tex_fonts = {
+    # Use LaTeX to write all text
+    "text.usetex": True,
+    "font.family": "serif",
+    # Use 10pt font in plots, to match 10pt font in document
+    "axes.labelsize": 10,
+    "font.size": 10,
+    # Make the legend/label fonts a little smaller
+    "legend.fontsize": 8,
+    "xtick.labelsize": 8,
+    "ytick.labelsize": 8
 }
 
-mpl.rcParams.update(nice_fonts)
+plt.rcParams.update(tex_fonts)
 
 x = np.linspace(0, 2*np.pi, 100)
 # Initialise figure instance
 fig, ax = plt.subplots(1, 1, figsize=set_size(width))
 # Plot
 ax.plot(x, np.sin(x))
-ax.set_xlim(0, 2*np.pi)
+ax.set_xlim(0, 2 * np.pi)
 ax.set_xlabel(r'$\theta$')
-ax.set_ylabel(r'$\sin{(\theta)}$')
+ax.set_ylabel(r'$\sin (\theta)$')
 ```
 
 Although this solution works just fine, it can become cumbersome to include this code to
@@ -324,8 +319,8 @@ default"){:class="img-responsive"}](https://matplotlib.org/devdocs/gallery/style
 default"){:class="img-responsive"}](https://matplotlib.org/devdocs/gallery/style_sheets/style_sheets_reference.html)
 
 Matplotlib provides [many different style sheets for you to try
-out](https://matplotlib.org/devdocs/gallery/style_sheets/style_sheets_reference.html).
-You can list the available styles with
+out](https://matplotlib.org/devdocs/gallery/style_sheets/style_sheets_reference.html). You
+can list the available styles with
 ```py
 import matplotlib.pyplot as plt
 plt.style.available
@@ -334,8 +329,8 @@ plt.style.available
 Style sheets allow the user to effortlessly swap between styles without having to alter
 their plotting routines. As an example, to change to the
 [seaborn](https://seaborn.pydata.org/) style we would use ```plt.style.use('seaborn')```.
-Style sheets are additive, and it is possible to specify multiple styles. For example, to
-use seaborn's colour palette and styling, but with our LaTeX fonts, we could do:
+Style sheets are additive, and it is possible to combine multiple styles. For example, to
+use seaborn's styling with our LaTeX fonts (a personal favourite), we would do:
 ```py
 plt.style.use('seaborn')
 plt.style.use('tex')
@@ -362,7 +357,7 @@ Below we create a simple figure and save it in the ```.pdf``` format. To remove 
 whitespace which matplotlib pads plots with we may use ```bbox_inches='tight'```:
 
 ```py
-""" A simple example of creating a figure and saving as a pdf. """
+"""A simple example of creating a figure and saving as a pdf."""
 import matplotlib.pyplot as plt
 from my_plot import set_size
 import numpy as np
@@ -373,15 +368,15 @@ plt.style.use('seaborn')
 plt.style.use('tex')
 width = 345
 
-x = np.linspace(0, 2*np.pi, 100)
+x = np.linspace(0, 2 * np.pi, 100)
 # Initialise figure instance
 fig, ax = plt.subplots(1, 1, figsize=set_size(width))
 
 # Plot
 ax.plot(x, np.sin(x))
-ax.set_xlim(0, 2*np.pi)
+ax.set_xlim(0, 2 * np.pi)
 ax.set_xlabel(r'$\theta$')
-ax.set_ylabel(r'$\sin{(\theta)}$')
+ax.set_ylabel(r'$\sin (\theta)$')
 
 # Save and remove excess whitespace
 fig.savefig('example_1.pdf', format='pdf', bbox_inches='tight')
