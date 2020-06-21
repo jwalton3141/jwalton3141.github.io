@@ -250,13 +250,14 @@ This is because at every single compile LaTeX is working to create your plots fr
 plotting commands. A solution is to realise each figure with a LaTeX `standalone`
 documentclass. With a clever Makefile you should be able to keep your compile time down.
 
-Another common problem with pgf plots is memory; once you're producing plots with lots
-of data points, the `.pgf` file grows very quickly. This memory usage will quickly upset
-pdflatex, and before long pdflatex will refuse to compile your document. It is possible to
-increase the main memory limit of pdfLaTeX. Alternatively, lueLaTeX can dynamically alter
-its memory as needed.
+Another common problem with pgf plots is memory; once you're producing plots
+with lots of data points, the `.pgf` file grows very quickly. This memory usage
+will quickly upset pdflatex, and before long pdflatex will refuse to compile
+your document. It is possible to increase the main memory limit of pdfLaTeX.
+Alternatively, [LuaTeX](http://www.luatex.org/) can dynamically alter its
+memory as needed.
 
 Although these problems are surmountable with a little patience (and may not even be
 problems for smaller projects or simpler plots), I tend to stick to the approach I outlined
-in [this previous post.]({% post_url _posts/2017-12-22-Embed-Publication-Matplotlib-Latex
+in [this previous post.]({% post_url 2017-12-22-Embed-Publication-Matplotlib-Latex
 %})
