@@ -7,23 +7,22 @@ layout: about
 <img style="float: left; padding-right:20px" width="165" height="145"
 src="/assets/portrait.jpg">
 
-Hi, my name is Jack. I'm a PhD student at Newcastle University, UK, where I'm
-based in the [School of Maths, Stats and
-Physics](https://www.ncl.ac.uk/maths-physics/research/). My research focuses on
-[collective
-behaviour](https://science.sciencemag.org/content/284/5411/99.full), a subject
-which seeks to understand how macro-level structures, such as flocks, schools
-and crowds, can arise from simple interactions between individuals.
+Hi, my name is Jack. I hold a PhD in applied mathematics and love all things
+computer-related (except for printers: though I think we can all agree that
+printers are the devil).
+
+I work for [Jumping Rivers Ltd.](https://www.jumpingrivers.com/), where I split
+my time between performing the role of a data scientist, trainer, and data
+engineer.
 
 On StackOverflow I'm [user
-jwalton](https://stackoverflow.com/users/11021886/jwalton?tab=profile). I try
-contribute to SO whenever I get the time (which seems to be less and less often
-these days!). I maintain a [professional
+jwalton](https://stackoverflow.com/users/11021886/jwalton?tab=profile). With
+considerably less flair, I maintain a [professional
 profile](https://www.linkedin.com/in/jwalton93/) over on LinkedIn.
 
-I'm also regularly employed as a subcontractor for [Jumping Rivers
-Ltd.](https://www.jumpingrivers.com/)
+Out of work I'm a keen cook, bird-watcher, and general outdoorsman (but indoors
+is also good).
 
 ### Contact me
 
-[j.walton4@newcastle.ac.uk](mailto:j.walton4@newcastle.ac.uk)
+[jwalton3141@gmail.com](mailto:jwalton3141@gmail.com)
