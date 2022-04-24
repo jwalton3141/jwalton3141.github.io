@@ -7,9 +7,10 @@ layout: about
 <img style="float: left; padding-right:20px" width="165" height="145"
 src="/assets/portrait.jpg">
 
-Hi, my name is Jack. I hold a PhD in applied mathematics and love all things
-computer-related (except for printers: though I think we can all agree that
-printers are the devil).
+Hi, my name is Jack. I hold a PhD in applied mathematics (you can find a copy
+of my thesis [here](/assets/thesis.pdf)) and love all things computer-related
+(except for printers: though I think we can all agree that printers are the
+devil).
 
 I work for [Jumping Rivers Ltd.](https://www.jumpingrivers.com/), where I split
 my time between performing the role of a data scientist, trainer, and data
