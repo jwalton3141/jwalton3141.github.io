@@ -8,8 +8,8 @@ image: https://jwalton3141.github.io/assets/background.png
   <h1>Talks</h1>
 
   <ul class="talks", style="list-style-type:none">
-    {% assign ordered_talks = site.talks %}
-    {% for talk in ordered_talks %}
+    {% assign talks = site.talks %}
+    {% for talk in talks reversed %}
       <li><a href="{{ site.baseurl }}{{ talk.slides }}">{{ talk.title }}</a></li>
 
       <div class="entry">
