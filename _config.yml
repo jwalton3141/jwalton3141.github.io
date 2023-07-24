@@ -1,7 +1,7 @@
 # Setup
 title:        It's more fun to compute
 tagline:      Thoughts on maths and computing
-description:  "A blog exploring how python and linux can be used to aid academic research."
+description:  "A blog exploring topics on Data Science, Data Engineering and Computing."
 url:          "https://jwalton3141.github.io/"
 baseurl:      ""
 paginate:     1
