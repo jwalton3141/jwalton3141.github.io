@@ -45,7 +45,7 @@ ax[1].pie(
 ax[1].set_title("Favourite soft drinks", y=0.975)
 
 fig.suptitle("Questionable Pie Charts", fontsize="xx-large")
-fig.savefig("questionable_pies.png")
+fig.savefig("questionable_pies.png", bbox_inches="tight")
 -->
 
 ![Questionable Pie Charts](/assets/posts/pies/questionable_pies.png)
