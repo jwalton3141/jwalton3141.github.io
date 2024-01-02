@@ -16,7 +16,7 @@ This is a great way to ensure that proposed changes pass particular unit tests,
 don't break existing functionality, and conform to agreed coding conventions
 for your project.
 
-<!-- image of either queue pipeline, or required approvals -->
+![Adding a build policy to a branch ([source](https://learn.microsoft.com/en-us/azure/devops/repos/git/branch-policies?view=azure-devops&tabs=browser#build-validation))](/assets/posts/ado_trigger_build_pipeline/add_build_policy.png)
 
 Branch policies can then be viewed as a useful tool in helping maintain and
 enforce quality control on code that is allowed into production, or other
@@ -27,8 +27,6 @@ important environments and branches.
 The [Azure Command Line Interface](https://learn.microsoft.com/en-us/cli/azure/what-is-azure-cli)
 (`az cli`) is an invaluable tool which can be used to interact with Azure
 resources in a programmatic manner.
-
-<!-- gif or image of az cli in action? -->
 
 Using the [Azure CLI DevOps extension](https://learn.microsoft.com/en-us/cli/azure/service-page/devops?view=azure-cli-latest),
 a developer can programmatically interact with Azure DevOps. This allows a
@@ -42,7 +40,10 @@ complete, in the form of a branch policy, their `az pipelines` triggered run
 won't count towards this requirement.
 
 Instead, to trigger a pipeline with the Azure CLI so that it counts towards a
-PR's branch policies, it's necessary to use the `az repos pr policy` command.
+PR's branch policies, as if you had pressed the queue button from your PR, it's
+necessary to use the `az repos pr policy` command.
+
+![Queuing a build policy pipeline from a PR.](/assets/posts/ado_trigger_build_pipeline/queue_pipeline.png)
 
 ## Triggering build validation pipelines with the Azure CLI
 
@@ -57,8 +58,6 @@ az repos pr policy list \
     --id <YOUR-PR-NUMBER-HERE> \
     --query "[?configuration.type.displayName=='Build'].evaluationId"
 ```
-
-<!-- add a note about determining the PR number -->
 
 To extract the information we need (the build evaluation ID) we pass a
 [JMESPath query](https://jmespath.org/) to the `--query` argument. Without this
