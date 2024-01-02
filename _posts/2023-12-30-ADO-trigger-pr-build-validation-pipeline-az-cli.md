@@ -48,11 +48,25 @@ necessary to use the `az repos pr policy` command.
 ## Triggering build validation pipelines with the Azure CLI
 
 To trigger a pipeline run against a PR that will count towards the target
-branch's validation policies, start by determining the build validation
-evaluation ID associated with the PR. Note that this value changes on a _per_
-PR basis.
+branch's validation policies, we will need to work out our build validation
+evaluation ID. Note that this value changes on a _per_ PR basis.
 
-We can determine this value for our PR with:
+However, to determine our build validation evaluation ID, we first need our PR
+number! We can get our PR number a few different ways; from ADO's UI (it's the
+number after the `!`); from our PR's URL (it's the number after
+`/pullrequest/`), or if we created our PR with the Azure CLI in the first
+place:
+
+```sh
+az repos pr create \
+  --repository $(basename -s .git `git config --get remote.origin.url`) \
+  --source-branch $(git branch --show-current) \
+  --target-branch main \
+  --query "pullRequestId"
+```
+
+Once we have our PR number, we can determine the build validation evaluation ID
+with:
 ```sh
 az repos pr policy list \
     --id <YOUR-PR-NUMBER-HERE> \
@@ -99,3 +113,7 @@ here as it does not require any other programs to be installed.
 
 This will now run our required build pipeline, against our PR, as if we had
 clicked the "Queue" button from the ADO UI, as desired!
+
+Having the ability to trigger such a pipeline run from the Azure CLI opens up
+lots of other opportunities for automating our tedious and repetitive Azure
+DevOps tasks.
