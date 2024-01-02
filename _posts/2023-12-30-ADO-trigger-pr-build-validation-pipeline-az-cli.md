@@ -5,7 +5,6 @@ comments: true
 ---
 
 [Branch policies in Azure DevOps (ADO)](https://learn.microsoft.com/en-us/azure/devops/repos/git/branch-policies) can be used to protect important branches. 
-
 With branch policies, it's possible to enforce, for example, that all pull
 requests into your `main` branch are given a minimum number of approvals before
 being allowed to complete.
@@ -16,7 +15,9 @@ This is a great way to ensure that proposed changes pass particular unit tests,
 don't break existing functionality, and conform to agreed coding conventions
 for your project.
 
-![Adding a build policy to a branch ([source](https://learn.microsoft.com/en-us/azure/devops/repos/git/branch-policies?view=azure-devops&tabs=browser#build-validation))](/assets/posts/ado_trigger_build_pipeline/add_build_policy.png)
+<p align="center">
+<img src="/assets/posts/ado_trigger_build_pipeline/add_build_policy.png" alt="Adding a build policy to a branch.">
+</p>
 
 Branch policies can then be viewed as a useful tool in helping maintain and
 enforce quality control on code that is allowed into production, or other
@@ -43,7 +44,10 @@ Instead, to trigger a pipeline with the Azure CLI so that it counts towards a
 PR's branch policies, as if you had pressed the queue button from your PR, it's
 necessary to use the `az repos pr policy` command.
 
-![Queuing a build policy pipeline from a PR.](/assets/posts/ado_trigger_build_pipeline/queue_pipeline.png)
+<p align="center">
+<img src="/assets/posts/ado_trigger_build_pipeline/queue_pipeline.png" alt="Queuing a build policy pipeline from a PR.">
+</p>
+
 
 ## Triggering build validation pipelines with the Azure CLI
 
