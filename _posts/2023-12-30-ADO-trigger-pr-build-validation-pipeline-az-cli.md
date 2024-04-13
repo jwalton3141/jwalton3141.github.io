@@ -73,8 +73,8 @@ Once we have our PR number, we can determine the build validation evaluation ID
 with:
 ```sh
 az repos pr policy list \
-    --id <YOUR-PR-NUMBER-HERE> \
-    --query "[?configuration.type.displayName=='Build'].evaluationId"
+  --id <YOUR-PR-NUMBER-HERE> \
+  --query "[?configuration.type.displayName=='Build'].evaluationId"
 ```
 
 To extract the information we need (the build evaluation ID) we pass a
@@ -89,8 +89,8 @@ hyphens. It'll look something like: `"d2hr35yd-9fe0-y4t5-hb35-5een2cr04b2"`.
 We then need to pass this value, unquoted, to `az repos pr policy queue` as:
 ```sh
 az repos pr policy queue \
-    --evaluation-id <BUILD-EVAL-ID-HERE> \
-    --id <YOUR-PR-NUMBER-HERE>
+  --evaluation-id <BUILD-EVAL-ID-HERE> \
+  --id <YOUR-PR-NUMBER-HERE>
 ```
 
 We can combine this two-step process into a single script by performing a
@@ -101,9 +101,9 @@ pr_id=123
 
 build_pipeline_eval_id=$(
   az repos pr policy list \
-      --id $pr_id \
-      --query "[?configuration.type.displayName=='Build'].evaluationId | [0]" \
-      --out tsv
+    --id $pr_id \
+    --query "[?configuration.type.displayName=='Build'].evaluationId | [0]" \
+    --out tsv
 )
 az repos pr policy queue --evaluation-id $build_pipeline_eval_id --id $pr_id
 ```
